@@ -1,101 +1,70 @@
-import Image from "next/image";
 
-export default function Home() {
+import { Logo, LogoLarge } from '@/components/logo';
+import NavBar from '@/components/navbar'
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import clsx from 'clsx'
+import { ArrowRightCircleIcon, Check } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+
+export default async function Home() {
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main>
+      <NavBar />
+      <section>
+        <div className="flex items-center justify-center flex-col mt-[80px] gap-4 ">
+          <span className="text-blue bg-blue/20 px-4 py-2 rounded-full text-sm">
+            Um chatbot assistente com tecnologia de IA
+          </span>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          <Logo />
+          <p className="text-center max-w-[500px]">
+            Seu assistente com tecnologia de IA! Incorpore Avontz-Chat em qualquer site
+            com apenas um trecho de código!
+          </p>
+          <Button className="bg-blue font-bold text-white px-4">
+            <Link href={'/auth/sign-up'}>
+            Comece de graça
+            </Link>
+          </Button>
+          <Image
+            src="/images/iphonecorinna.png"
+            width={400}
+            height={100}
+            alt="Logo"
+            className="max-w-lg object-contain"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+      <section className="flex justify-center items-center flex-col gap-4 mt-10">
+        <h2 className="text-4xl text-center"> Escolha o que combina com você</h2>
+        <p className="text-muted-foreground text-center max-w-lg">
+          Nossos planos de preços simples são adaptados para atender às suas necessidades. Se
+          {"você"} não está pronto para se comprometer, você pode começar gratuitamente.
+        </p>
+      </section>
+      <div className="flex  justify-center gap-4 flex-wrap mt-6">
+
+      </div>
+
+      <section className="flex justify-center items-center flex-col gap-4 mt-28">
+        <h2 className="text-4xl text-center">Sala de Notícias</h2>
+        <p className="text-muted-foreground text-center max-w-lg">
+          Explore nossos insights sobre IA, tecnologia e otimização de seus negócios.
+        </p>
+      </section>
+      <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8">
+
+      </section>
+    </main>
+  )
 }
