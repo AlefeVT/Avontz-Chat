@@ -13,7 +13,7 @@ const LoginForm = (props: Props) => {
   } = useFormContext()
   return (
     <>
-      <h2 className="text-gravel md:text-4xl font-bold">Conecte-se</h2>
+      <h2 className="text-slateBlue md:text-4xl font-bold">Conecte-se</h2>
       <p className="text-iridium md:text-sm">
       Você receberá uma senha única
       </p>

@@ -1,5 +1,5 @@
 
-import { Logo, LogoLarge } from '@/components/logo';
+import { Logo } from '@/components/logo';
 import NavBar from '@/components/navbar'
 import { Button } from '@/components/ui/button'
 import {
@@ -10,8 +10,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { pricingCards } from '@/constants/landing-page';
 import clsx from 'clsx'
-import { ArrowRightCircleIcon, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -37,7 +38,7 @@ export default async function Home() {
             </Link>
           </Button>
           <Image
-            src="/images/iphonecorinna.png"
+            src="/images/ilustracao_phone.png"
             width={400}
             height={100}
             alt="Logo"
@@ -53,7 +54,46 @@ export default async function Home() {
         </p>
       </section>
       <div className="flex  justify-center gap-4 flex-wrap mt-6">
-
+      {pricingCards.map((card) => (
+          <Card
+            key={card.title}
+            className={clsx('w-[300px] flex flex-col justify-between', {
+              'border-2 border-primary': card.title === 'Unlimited',
+            })}
+          >
+            <CardHeader>
+              <CardTitle className="text-blue">{card.title}</CardTitle>
+              <CardDescription>
+                {pricingCards.find((c) => c.title === card.title)?.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <span className="text-4xl font-bold">{card.price}</span>
+              <span className="text-muted-foreground">
+                <span>/ mês</span>
+              </span>
+            </CardContent>
+            <CardFooter className="flex flex-col items-start gap-4">
+              <div>
+                {card.features.map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex gap-2"
+                  >
+                    <Check />
+                    <p>{feature}</p>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href={`/dashbord?plan=${card.title}`}
+                className="bg-[#98b8dd] border-blue border-2 p-2 w-full text-center font-bold rounded-md"
+              >
+                Comece
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
       </div>
 
       <section className="flex justify-center items-center flex-col gap-4 mt-28">
