@@ -2,7 +2,7 @@ import { SIDE_BAR_MENU } from '@/constants/menu'
 
 import React from 'react'
 
-import { LogOut, MonitorSmartphone } from 'lucide-react'
+import { LogOut, Menu, MonitorSmartphone } from 'lucide-react'
 import { MenuLogo } from '@/icons/menu-logo'
 import MenuItem from './menu-item'
 import DomainMenu from './domain-menu'
@@ -33,7 +33,10 @@ export const MinMenu = ({
       <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
         {/* <MenuLogo onClick={onShrink} /> */}
 
-        <LogoSidebarClose onClick={onShrink} />
+        <Menu
+          className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards"
+          onClick={onShrink}
+        />
       </span>
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
         <div className="flex flex-col">

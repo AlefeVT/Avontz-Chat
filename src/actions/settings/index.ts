@@ -37,11 +37,11 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
 
     if (!domainExists) {
       if (
-        (subscription?.subscription?.plan == 'STANDARD' &&
+        (subscription?.subscription?.plan == 'Simples' &&
           subscription._count.domains < 1) ||
-        (subscription?.subscription?.plan == 'PRO' &&
+        (subscription?.subscription?.plan == 'Ultimate' &&
           subscription._count.domains < 5) ||
-        (subscription?.subscription?.plan == 'ULTIMATE' &&
+        (subscription?.subscription?.plan == 'Plus' &&
           subscription._count.domains < 10)
       ) {
         const newDomain = await client.user.update({
@@ -55,7 +55,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
                 icon,
                 chatBot: {
                   create: {
-                    welcomeMessage: 'Hey there, have  a question? Text us here',
+                    welcomeMessage: 'Olá, tem alguma pergunta? Envie-nos uma mensagem aqui',
                   },
                 },
               },
@@ -64,18 +64,18 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
         })
 
         if (newDomain) {
-          return { status: 200, message: 'Domain successfully added' }
+          return { status: 200, message: 'Domínio adicionado com sucesso' }
         }
       }
       return {
         status: 400,
         message:
-          "You've reached the maximum number of domains, upgrade your plan",
+          "Você atingiu o número máximo de domínios, atualize seu plano",
       }
     }
     return {
       status: 400,
-      message: 'Domain already exists',
+      message: 'O domínio já existe',
     }
   } catch (error) {
     console.log(error)
@@ -84,8 +84,14 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
 
 export const onGetSubscriptionPlan = async () => {
   try {
+    console.log("Fetching current user...");
     const user = await currentUser()
-    if (!user) return
+    if (!user) {
+      console.log("User not found.");
+      return
+    }
+
+    console.log("User found:", user);
     const plan = await client.user.findUnique({
       where: {
         clerkId: user.id,
@@ -97,14 +103,19 @@ export const onGetSubscriptionPlan = async () => {
           },
         },
       },
-    })
+    });
+
     if (plan) {
-      return plan.subscription?.plan
+      const subscriptionPlan = plan.subscription?.plan;
+      return subscriptionPlan;
+    } else {
+      console.log("No plan found for user.");
     }
   } catch (error) {
-    console.log(error)
+    console.error("Error fetching subscription plan:", error);
   }
 }
+
 
 export const onGetAllAccountDomains = async () => {
   const user = await currentUser()
@@ -149,7 +160,7 @@ export const onUpdatePassword = async (password: string) => {
     console.log(user);
     const update = await clerkClient.users.updateUser(user.id, { password })
     if (update) {
-      return { status: 200, message: 'Password updated' }
+      return { status: 200, message: 'Senha atualizada' }
     }
   } catch (error) {
     console.log(error)
@@ -225,19 +236,19 @@ export const onUpdateDomain = async (id: string, name: string) => {
       if (domain) {
         return {
           status: 200,
-          message: 'Domain updated',
+          message: 'Domínio atualizado',
         }
       }
 
       return {
         status: 400,
-        message: 'Oops something went wrong!',
+        message: 'Ops, algo deu errado!',
       }
     }
 
     return {
       status: 400,
-      message: 'Domain with this name already exists',
+      message: 'Já existe um domínio com este nome',
     }
   } catch (error) {
     console.log(error)
@@ -268,13 +279,13 @@ export const onChatBotImageUpdate = async (id: string, icon: string) => {
     if (domain) {
       return {
         status: 200,
-        message: 'Domain updated',
+        message: 'Domínio atualizado',
       }
     }
 
     return {
       status: 400,
-      message: 'Oops something went wrong!',
+      message: 'Ops, algo deu errado!',
     }
   } catch (error) {
     console.log(error)
@@ -302,7 +313,7 @@ export const onUpdateWelcomeMessage = async (
     })
 
     if (update) {
-      return { status: 200, message: 'Welcome message updated' }
+      return { status: 200, message: 'Mensagem de boas-vindas atualizada' }
     }
   } catch (error) {
     console.log(error)
@@ -340,7 +351,7 @@ export const onDeleteUserDomain = async (id: string) => {
       if (deletedDomain) {
         return {
           status: 200,
-          message: `${deletedDomain.name} was deleted successfully`,
+          message: `${deletedDomain.name} foi excluído com sucesso`,
         }
       }
     }
@@ -381,14 +392,14 @@ export const onCreateHelpDeskQuestion = async (
     if (helpDeskQuestion) {
       return {
         status: 200,
-        message: 'New help desk question added',
+        message: 'Nova pergunta do suporte técnico adicionada',
         questions: helpDeskQuestion.helpdesk,
       }
     }
 
     return {
       status: 400,
-      message: 'Oops! something went wrong',
+      message: 'Ops! algo deu errado',
     }
   } catch (error) {
     console.log(error)
@@ -410,7 +421,7 @@ export const onGetAllHelpDeskQuestions = async (id: string) => {
 
     return {
       status: 200,
-      message: 'New help desk question added',
+      message: 'Nova pergunta do suporte técnico adicionada',
       questions: questions,
     }
   } catch (error) {
@@ -444,13 +455,13 @@ export const onCreateFilterQuestions = async (id: string, question: string) => {
     if (filterQuestion) {
       return {
         status: 200,
-        message: 'Filter question added',
+        message: 'Pergunta de filtro adicionada',
         questions: filterQuestion.filterQuestions,
       }
     }
     return {
       status: 400,
-      message: 'Oops! something went wrong',
+      message: 'Ops! algo deu errado',
     }
   } catch (error) {
     console.log(error)
@@ -528,7 +539,7 @@ export const onCreateNewDomainProduct = async (
     if (product) {
       return {
         status: 200,
-        message: 'Product successfully created',
+        message: 'Produto criado com sucesso',
       }
     }
   } catch (error) {

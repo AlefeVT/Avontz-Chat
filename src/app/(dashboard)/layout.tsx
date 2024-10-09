@@ -15,8 +15,6 @@ const OwnerLayout = async ({ children }: Props) => {
     return null;
   }
 
-  console.log(authenticated);
-
   return (
     <ChatProvider>
       <div className="flex h-screen w-full">
