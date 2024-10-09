@@ -60,7 +60,7 @@ model ChatBot {
 
 model Billings {
   id      String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  plan    Plans   @default(STANDARD)
+  plan    Plans   @default(Simples)
   credits Int     @default(10)
   User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId  String? @unique @db.Uuid
@@ -162,9 +162,9 @@ model Product {
 }
 
 enum Plans {
-  STANDARD
-  PRO
-  ULTIMATE
+  Simples
+  Ultimate
+  Plus
 }
 
 enum Role {

@@ -41,7 +41,7 @@ export const useDomain = () => {
       reset()
       setLoading(false)
       toast({
-        title: domain.status == 200 ? 'Success' : 'Error',
+        title: domain.status == 200 ? 'Sucesso' : 'Error',
         description: domain.message,
       })
       router.refresh()

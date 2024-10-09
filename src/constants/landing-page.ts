@@ -1,6 +1,6 @@
-export const pricingCards = [
+export const pricingCards = [  
     {
-      title: 'Padrão',
+      title: 'Simples',
       description: 'Perfeito para experimentar o Corinna AI',
       price: 'R$0',
       duration: '',
