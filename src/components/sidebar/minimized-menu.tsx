@@ -56,13 +56,13 @@ export const MinMenu = ({
         <div className="flex flex-col">
           <MenuItem
             size="min"
-            label="Sign out"
+            label="Desconectar"
             icon={<LogOut />}
             onSignOut={onSignOut}
           />
           <MenuItem
             size="min"
-            label="Mobile App"
+            label="Aplicativo móvel"
             icon={<MonitorSmartphone />}
           />
         </div>

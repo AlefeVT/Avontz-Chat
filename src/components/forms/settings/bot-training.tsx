@@ -22,12 +22,12 @@ const BotTrainingForm = ({ id }: Props) => {
       </div>
       <TabsMenu triggers={HELP_DESK_TABS_MENU}>
         <TabsContent
-          value="help desk"
+          value="suporte"
           className="w-full"
         >
           <HelpDesk id={id} />
         </TabsContent>
-        <TabsContent value="questions">
+        <TabsContent value="perguntas">
           <FilterQuestions id={id} />
         </TabsContent>
       </TabsMenu>

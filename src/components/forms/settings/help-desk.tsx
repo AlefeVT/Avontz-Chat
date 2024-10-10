@@ -31,8 +31,8 @@ const HelpDesk = ({ id }: Props) => {
         >
           <div className="flex flex-col gap-3">
             <Section
-              label="Question"
-              message="Add a question that you believe is frequently asked."
+              label="Pergunta"
+              message="Adicione uma pergunta que você acredita ser frequentemente feita."
             />
             <FormGenerator
               inputType="input"
@@ -40,14 +40,14 @@ const HelpDesk = ({ id }: Props) => {
               errors={errors}
               form="help-desk-form"
               name="question"
-              placeholder="Type your question"
+              placeholder="Digite sua pergunta"
               type="text"
             />
           </div>
           <div className="flex flex-col gap-3">
             <Section
-              label="Answer to question"
-              message="The answer for the question above."
+              label="Resposta para a pergunta"
+              message="A resposta para a pergunta acima."
             />
             <FormGenerator
               inputType="textarea"
@@ -55,16 +55,16 @@ const HelpDesk = ({ id }: Props) => {
               errors={errors}
               name="answer"
               form="help-desk-form"
-              placeholder="Type your answer"
+              placeholder="Digite sua resposta"
               type="text"
               lines={5}
             />
           </div>
           <Button
             type="submit"
-            className="bg-orange hover:bg-orange hover:opacity-70 transition duration-150 ease-in-out text-white font-semibold"
+            className="bg-blue hover:bg-blue hover:opacity-70 transition duration-150 ease-in-out text-white font-semibold"
           >
-            Create
+            Criar
           </Button>
         </form>
       </CardContent>
@@ -79,7 +79,7 @@ const HelpDesk = ({ id }: Props) => {
               />
             ))
           ) : (
-            <CardDescription>No Questions to show</CardDescription>
+            <CardDescription>Sem perguntas para mostrar</CardDescription>
           )}
         </Loader>
       </CardContent>
