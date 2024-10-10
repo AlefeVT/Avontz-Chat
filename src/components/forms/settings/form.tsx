@@ -21,7 +21,7 @@ const WelcomeMessage = dynamic(
 type Props = {
   id: string
   name: string
-  plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
+  plan: 'Simples' | 'Ultimate' | 'Plus'
   chatBot: {
     id: string
     icon: string | null
@@ -86,7 +86,7 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-5 justify-end">
+      <div className="flex gap-5 justify-end mr-10">
         <Button
           onClick={onDeleteDomain}
           variant="destructive"
