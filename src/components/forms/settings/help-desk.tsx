@@ -24,7 +24,7 @@ const HelpDesk = ({ id }: Props) => {
   return (
     <Card className="w-full grid grid-cols-1 lg:grid-cols-2">
       <CardContent className="p-6 border-r-[1px]">
-        <CardTitle>Help Desk</CardTitle>
+        <CardTitle>Suporte Técnico</CardTitle>
         <form
           onSubmit={onSubmitQuestion}
           className="flex flex-col gap-6 mt-10"

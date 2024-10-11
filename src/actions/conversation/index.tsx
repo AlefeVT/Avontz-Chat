@@ -22,8 +22,8 @@ export const onToggleRealtime = async (id: string, state: boolean) => {
       return {
         status: 200,
         message: chatRoom.live
-          ? 'Realtime mode enabled'
-          : 'Realtime mode disabled',
+          ? 'Modo em tempo real ativado'
+          : 'Modo em tempo real desativado',
         chatRoom,
       }
     }

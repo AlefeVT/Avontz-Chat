@@ -84,7 +84,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
             </Avatar>
             <div className="flex items-start flex-col">
               <h3 className="text-lg font-bold leading-none">
-                Sales Rep - Web Prodigies
+              Representante de vendas - Avontz
               </h3>
               <p className="text-sm">{domainName.split('.com')[0]}</p>
               {realtimeMode?.mode && (
@@ -97,7 +97,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
           </div>
           <div className="relative w-16 h-16">
             <Image
-              src="https://ucarecdn.com/019dd17d-b69b-4dea-a16b-60e0f25de1e9/propuser.png"
+              src="https://ucarecdn.com/be2d15a1-4ccd-443e-a43f-f64e25a8bedc/propuser.png"
               fill
               alt="users"
               objectFit="contain"
@@ -134,7 +134,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
                 <div className="flex justify-between">
                   <Input
                     {...register('content')}
-                    placeholder="Type your message..."
+                    placeholder="Digite sua mensagem..."
                     className="focus-visible:ring-0 flex-1 p-0 focus-visible:ring-offset-0 bg-porcelain rounded-none outline-none border-none"
                   />
                   <Button
@@ -157,12 +157,12 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
             </div>
           </TabsContent>
 
-          <TabsContent value="helpdesk">
+          <TabsContent value="suporte">
             <div className="h-[485px] overflow-y-auto overflow-x-hidden p-4 flex flex-col gap-4">
               <div>
-                <CardTitle>Help Desk</CardTitle>
+                <CardTitle>Suporte Técnico</CardTitle>
                 <CardDescription>
-                  Browse from a list of questions people usually ask.
+                Navegue em uma lista de perguntas que as pessoas costumam fazer.
                 </CardDescription>
               </div>
               <Separator orientation="horizontal" />
@@ -178,7 +178,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
           </TabsContent>
         </TabsMenu>
         <div className="flex justify-center ">
-          <p className="text-gray-400 text-xs">Powered By Web Prodigies</p>
+          <p className="text-gray-400 text-xs">Desenvolvido por Avontz-Chat</p>
         </div>
       </div>
     )
