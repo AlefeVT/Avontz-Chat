@@ -26,7 +26,7 @@ const config = {
         peach: '#FFE0BD',
         platinum: '#E6E6E6',
         ghost: '#CDCDCD',
-        grandis: '#FFC989',
+        blueGrandis: '#4A90E2',
         porcelain: '#F1F1F1',
         ironside: '#636363',
         border: 'hsl(var(--border))',

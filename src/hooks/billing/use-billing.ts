@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import {
-  onCreateCustomerPaymentIntentSecret,
-  onGetStripeClientSecret,
-  onUpdateSubscription,
-} from '@/actions/stripe'
+// import {
+//   onCreateCustomerPaymentIntentSecret,
+//   onGetStripeClientSecret,
+//   onUpdateSubscription,
+// } from '@/actions/stripe'
 import axios from 'axios'
-import {
-  useElements,
-  useStripe as useStripeHook,
-} from '@stripe/react-stripe-js'
+// import {
+//   useElements,
+//   useStripe as useStripeHook,
+// } from '@stripe/react-stripe-js'
 import { useRouter } from 'next/navigation'
 import { useToast } from '../use-toast'
 
@@ -40,7 +40,7 @@ export const useStripeCustomer = (amount: number, stripeId: string) => {
   const onGetCustomerIntent = async (amount: number) => {
     try {
       setLoadForm(true)
-      const intent = await onCreateCustomerPaymentIntentSecret(amount, stripeId)
+      // const intent = await onCreateCustomerPaymentIntentSecret(amount, stripeId)
       if (intent) {
         setLoadForm(false)
         setStripeSecret(intent.secret!)
