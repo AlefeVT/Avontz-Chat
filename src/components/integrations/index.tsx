@@ -26,6 +26,7 @@ const IntegrationsList = ({ connections }: Props) => {
                     sizes="100vw"
                     src={`https://ucarecdn.com/${item.logo}/`}
                     alt="Logo"
+                    className='rounded-md'
                     fill
                   />
                 </div>

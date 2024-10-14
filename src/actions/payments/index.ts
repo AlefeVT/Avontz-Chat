@@ -75,7 +75,7 @@ export const onBookNewAppointment = async (
     })
 
     if (booking) {
-      return { status: 200, message: 'Booking created' }
+      return { status: 200, message: 'Reserva criada' }
     }
   } catch (error) {
     console.log(error)
@@ -106,7 +106,7 @@ export const saveAnswers = async (
     }
     return {
       status: 200,
-      messege: 'Updated Responses',
+      messege: 'Respostas atualizadas',
     }
   } catch (error) {
     console.log(error)

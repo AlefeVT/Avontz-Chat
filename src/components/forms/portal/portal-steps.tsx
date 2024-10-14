@@ -22,18 +22,18 @@ type Props = {
   slot?: string
   loading: boolean
   bookings?:
-    | {
-        date: Date
-        slot: string
-      }[]
-    | undefined
+  | {
+    date: Date
+    slot: string
+  }[]
+  | undefined
   products?:
-    | {
-        name: string
-        image: string
-        price: number
-      }[]
-    | undefined
+  | {
+    name: string
+    image: string
+    price: number
+  }[]
+  | undefined
   amount?: number
   stripeId?: string
 }
@@ -97,10 +97,10 @@ const PortalSteps = ({
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <h2 className="font-bold text-gray-600 text-4xl">Thank You</h2>
+      <h2 className="font-bold text-gray-600 text-4xl">Obrigado</h2>
       <p className="text-center">
-        Thank you for taking the time to fill in this form. We look forward to
-        <br /> speaking to you soon.
+        Obrigado por dedicar seu tempo para preencher este formulário. Estamos ansiosos para
+        <br /> falar com você em breve.
       </p>
     </div>
   )

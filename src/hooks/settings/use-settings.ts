@@ -65,7 +65,7 @@ import { useToast } from '../use-toast'
         if (updated) {
           reset()
           setLoading(false)
-          toast({ title: 'Success', description: updated.message })
+          toast({ title: 'Sucesso!', description: updated.message })
         }
       } catch (error) {
         console.log(error)
@@ -99,7 +99,7 @@ import { useToast } from '../use-toast'
         const domain = await onUpdateDomain(id, values.domain)
         if (domain) {
           toast({
-            title: 'Success',
+            title: 'Sucesso!',
             description: domain.message,
           })
         }
@@ -119,7 +119,7 @@ import { useToast } from '../use-toast'
         const message = await onUpdateWelcomeMessage(values.welcomeMessage, id)
         if (message) {
           toast({
-            title: 'Success',
+            title: 'Sucesso!',
             description: message.message,
           })
         }
@@ -134,7 +134,7 @@ import { useToast } from '../use-toast'
       const deleted = await onDeleteUserDomain(id)
       if (deleted) {
         toast({
-          title: 'Success',
+          title: 'Sucesso!',
           description: deleted.message,
         })
         setDeleting(false)
@@ -282,7 +282,7 @@ import { useToast } from '../use-toast'
         if (product) {
           reset()
           toast({
-            title: 'Success',
+            title: 'Sucesso!',
             description: product.message,
           })
           setLoading(false)

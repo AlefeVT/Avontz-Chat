@@ -5,6 +5,9 @@ import { currentUser } from '@clerk/nextjs/server'
 
 
 export const onDomainCustomerResponses = async (customerId: string) => {
+
+  console.log("chamou a função e recebeu: " + customerId);
+
   try {
     const customerQuestions = await client.customer.findUnique({
       where: {
@@ -75,7 +78,7 @@ export const onBookNewAppointment = async (
     })
 
     if (booking) {
-      return { status: 200, message: 'Booking created' }
+      return { status: 200, message: 'Reserva criada' }
     }
   } catch (error) {
     console.log(error)
@@ -106,7 +109,7 @@ export const saveAnswers = async (
     }
     return {
       status: 200,
-      messege: 'Updated Responses',
+      messege: 'Respostas atualizadas',
     }
   } catch (error) {
     console.log(error)

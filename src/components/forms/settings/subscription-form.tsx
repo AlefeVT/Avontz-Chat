@@ -19,7 +19,7 @@ const SubscriptionForm = ({ plan }: Props) => {
         <div className="flex flex-col gap-3">
           <SubscriptionCard
             title="Simples"
-            description="Perfect if you’re just getting started with Corinna AI"
+            description="Perfeito se você está apenas começando com Avontz-Chat"
             price="0"
             payment={payment}
             onPayment={onSetPayment}
@@ -28,7 +28,7 @@ const SubscriptionForm = ({ plan }: Props) => {
 
           <SubscriptionCard
             title="Ultimate"
-            description="Perfect if you’re just getting started with Corinna AI"
+            description="Perfeito se você está apenas começando com o Avontz-Chat"
             price="15"
             payment={payment}
             onPayment={onSetPayment}
@@ -37,7 +37,7 @@ const SubscriptionForm = ({ plan }: Props) => {
 
           <SubscriptionCard
             title="Plus"
-            description="Perfect if you’re just getting started with Corinna AI"
+            description="Perfeito se você está apenas começando com o Avontz-Chat"
             price="35"
             payment={payment}
             onPayment={onSetPayment}

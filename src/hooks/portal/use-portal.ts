@@ -52,7 +52,7 @@ import { useToast } from '../use-toast'
           )
           if (booked && booked.status == 200) {
             toast({
-              title: 'Success',
+              title: 'Sucesso!',
               description: booked.message,
             })
             setStep(3)
