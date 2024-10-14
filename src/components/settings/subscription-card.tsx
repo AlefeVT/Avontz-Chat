@@ -45,7 +45,7 @@ const SubscriptionCard = ({
             <div
               className={cn(
                 'w-4 h-4 rounded-full',
-                payment == id ? 'bg-peach' : 'bg-platinum'
+                payment == id ? 'bg-lightBluePearl' : 'bg-platinum'
               )}
             />
             <Input

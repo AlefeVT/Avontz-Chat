@@ -83,7 +83,7 @@ const Bubble = ({ message, createdAt }: Props) => {
                 href={message.link}
                 target="_blank"
               >
-                Your Link
+                Seu Link
               </Link>
             )}
           </p>

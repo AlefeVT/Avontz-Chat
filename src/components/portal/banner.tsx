@@ -1,10 +1,10 @@
 import React from 'react'
-import { LogoSidebar } from '../logo'
+import { Logo, LogoMini, LogoSidebar } from '../logo'
 
 export const PortalBanner = () => {
   return (
     <div className="w-full bg-muted flex justify-center py-5">
-      <LogoSidebar />
+      <LogoSidebar size={22} />
     </div>
   )
 }

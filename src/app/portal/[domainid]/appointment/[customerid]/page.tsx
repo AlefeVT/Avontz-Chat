@@ -6,8 +6,14 @@ import React from 'react'
   type Props = { params: { domainid: string; customerid: string } }
   
   const CustomerSignUpForm = async ({ params }: Props) => {
+
+    console.log(params.customerid);
     const questions = await onDomainCustomerResponses(params.customerid)
+
+
     const bookings = await onGetAllDomainBookings(params.domainid)
+
+    console.log(questions);
   
     if (!questions) return null
   

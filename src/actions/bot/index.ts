@@ -149,9 +149,8 @@ export const onAiChatBotAssistant = async (
             console.log('new customer made')
             const response = {
               role: 'assistant',
-              content: `Bem-vindo a bordo ${
-                customerEmail.split('@')[0]
-              }! Estou feliz em me conectar com você. Há alguma coisa em que você precise de ajuda?`,
+              content: `Bem-vindo a bordo ${customerEmail.split('@')[0]
+                }! Estou feliz em me conectar com você. Há alguma coisa em que você precise de ajuda?`,
             }
             return { response }
           }
@@ -162,7 +161,7 @@ export const onAiChatBotAssistant = async (
             message,
             author
           )
-          
+
           onRealTimeChat(
             checkCustomer.customer[0].chatRoom[0].id,
             message,
@@ -206,6 +205,15 @@ export const onAiChatBotAssistant = async (
           author
         )
 
+
+        let responseLink = '';
+
+        const customerId = checkCustomer?.customer[0].id;
+        if (customerId) {
+          responseLink = `http://localhost:3000/portal/${id}/appointment/${customerId}`;
+        }
+
+
         const chatCompletion = await openai.chat.completions.create({
           messages: [
             {
@@ -224,18 +232,14 @@ export const onAiChatBotAssistant = async (
               Sempre mantenha o caráter e seja respeitoso.
 
               A série de perguntas: [${chatBotDomain.filterQuestions
-                .map((questions) => questions.question)
-                .join(', ')}]
+                  .map((questions) => questions.question)
+                  .join(', ')}]
 
-              se o cliente disser algo fora do contexto ou inapropriado. Basta dizer que isso está além de você e você terá um usuário real para continuar a conversa. E adicione uma palavra-chave (tempo real) no final.
+              se o cliente disser algo fora do contexto ou inapropriado. Basta dizer que isso está além de você. Você terá um usuário real para continuar a conversa. E adicione uma palavra-chave (tempo real) no final.
 
-              se o cliente concordar em marcar uma consulta, envie-lhe este link http://localhost:3000/portal/${id}/appointment/${
-                checkCustomer?.customer[0].id
-              }
+              se o cliente concordar em marcar uma consulta, treinamento, reunião ao algo do tipo, algo que envolva falar com o responsavel do site, envie-lhe este link ${responseLink}
 
-              se o cliente quiser comprar um produto redirecione-o para a página de pagamento http://localhost:3000/portal/${id}/payment/${
-                checkCustomer?.customer[0].id
-              }
+              se o cliente quiser comprar um produto redirecione-o para a página de pagamento ${responseLink}
           `,
             },
             ...chat,

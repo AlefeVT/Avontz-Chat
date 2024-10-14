@@ -39,15 +39,15 @@ const BookAppointmentDate = ({
   return (
     <div className="flex flex-col gap-5 justify-center">
       <div className="flex justify-center">
-        <h2 className="text-4xl font-bold mb-5">Book a meeting</h2>
+        <h2 className="text-4xl font-bold mb-5">Marque uma reunião</h2>
       </div>
       <div className="flex gap-10 flex-col sm:flex-row">
         <div className="w-[300px]">
-          <h6>Discovery Call</h6>
+          <h6>Chamada de descoberta</h6>
           <CardDescription>
-            During this call, we aim to explore potential avenues for
-            partnership, promotional opportunities, or any other means through
-            which we can contribute to the success of your company.
+          Durante esta chamada, pretendemos explorar possíveis caminhos para
+            parceria, oportunidades promocionais ou qualquer outro meio através
+            com os quais podemos contribuir para o sucesso da sua empresa.
           </CardDescription>
         </div>
         <div>
@@ -67,7 +67,7 @@ const BookAppointmentDate = ({
               <Card
                 onClick={() => onSlot(slot.slot)}
                 className={cn(
-                  currentSlot == slot.slot ? 'bg-grandis' : 'bg-peach',
+                  currentSlot == slot.slot ? 'bg-grandis' : 'bg-lightBluePearl',
                   'px-10 py-4',
                   bookings &&
                     bookings.some(
@@ -77,7 +77,7 @@ const BookAppointmentDate = ({
                         booking.slot == slot.slot
                     )
                     ? 'bg-gray-300'
-                    : 'cursor-pointer border-orange hover:bg-grandis transition duration-150 ease-in-out'
+                    : 'cursor-pointer border-blue hover:bg-grandis transition duration-150 ease-in-out'
                 )}
               >
                 <Input
@@ -110,10 +110,10 @@ const BookAppointmentDate = ({
           onClick={onBack}
           variant={'outline'}
         >
-          Edit Questions?
+          Editar perguntas?
         </Button>
         <Button>
-          <Loader loading={loading}>Book Now</Loader>
+          <Loader loading={loading}>Reserve agora</Loader>
         </Button>
       </div>
     </div>

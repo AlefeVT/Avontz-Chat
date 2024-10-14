@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/dialog'
 import { ArrowBigLeftIcon, ArrowLeft, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { Logo, LogoMini, LogoSidebar } from '../logo'
 
 type Props = {
   trigger: React.ReactNode
@@ -35,11 +36,7 @@ const Modal = ({
           <DialogContent>
             <div className="flex justify-center gap-3">
               <div className="w-12 h-12 relative">
-                <Image
-                  src={`https://ucarecdn.com/2c9bd4ab-1f00-41df-bad2-df668f65a232/`}
-                  fill
-                  alt="Corinna"
-                />
+                <LogoMini />
               </div>
               <div className="text-gray-400">
                 <ArrowLeft size={20} />
@@ -50,6 +47,7 @@ const Modal = ({
                   src={`https://ucarecdn.com/${logo}/`}
                   fill
                   alt="Stripe"
+                  className='rounded-md'
                 />
               </div>
             </div>

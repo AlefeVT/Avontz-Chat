@@ -27,6 +27,7 @@ const config = {
         platinum: '#E6E6E6',
         ghost: '#CDCDCD',
         blueGrandis: '#4A90E2',
+        lightBluePearl: '#E0F2FF',
         porcelain: '#F1F1F1',
         ironside: '#636363',
         border: 'hsl(var(--border))',
