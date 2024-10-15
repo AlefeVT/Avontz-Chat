@@ -1,23 +1,23 @@
-import React from 'react'
-import { cn, extractUUIDFromString, getMonthName } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { User } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import React from 'react';
+import { cn, extractUUIDFromString, getMonthName } from '@/lib/utils';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { User } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {
   message: {
-    role: 'assistant' | 'user'
-    content: string
-    link?: string
-  }
-  createdAt?: Date
-}
+    role: 'assistant' | 'user';
+    content: string;
+    link?: string;
+  };
+  createdAt?: Date;
+};
 
 const Bubble = ({ message, createdAt }: Props) => {
-  let d = new Date()
-  const image = extractUUIDFromString(message.content)
-  console.log(message.link)
+  let d = new Date();
+  const image = extractUUIDFromString(message.content);
+  console.log(message.link);
 
   return (
     <div
@@ -28,10 +28,7 @@ const Bubble = ({ message, createdAt }: Props) => {
     >
       {message.role == 'assistant' ? (
         <Avatar className="w-5 h-5">
-          <AvatarImage
-            src="https://github.com/shadcn.png"
-            alt="@shadcn"
-          />
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       ) : (
@@ -68,11 +65,7 @@ const Bubble = ({ message, createdAt }: Props) => {
         )}
         {image ? (
           <div className="relative aspect-square">
-            <Image
-              src={`https://ucarecdn.com/${image[0]}/`}
-              fill
-              alt="image"
-            />
+            <Image src={`https://ucarecdn.com/${image[0]}/`} fill alt="image" />
           </div>
         ) : (
           <p className="text-sm">
@@ -90,7 +83,7 @@ const Bubble = ({ message, createdAt }: Props) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Bubble
+export default Bubble;

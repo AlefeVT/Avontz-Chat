@@ -1,17 +1,16 @@
+import { onIntegrateDomain } from '@/actions/settings';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { UploadClient } from '@uploadcare/upload-client';
+import { usePathname, useRouter } from 'next/navigation';
 
-import { onIntegrateDomain } from '@/actions/settings'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { UploadClient } from '@uploadcare/upload-client'
-import { usePathname, useRouter } from 'next/navigation'
-
-import { useEffect, useState } from 'react'
-import { FieldValues, useForm } from 'react-hook-form'
-import { useToast } from '../use-toast'
-import { AddDomainSchema } from '@/schemas/settings.schema'
+import { useEffect, useState } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
+import { useToast } from '../use-toast';
+import { AddDomainSchema } from '@/schemas/settings.schema';
 
 const upload = new UploadClient({
   publicKey: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY as string,
-})
+});
 
 export const useDomain = () => {
   const {
@@ -21,32 +20,32 @@ export const useDomain = () => {
     reset,
   } = useForm<FieldValues>({
     resolver: zodResolver(AddDomainSchema),
-  })
+  });
 
-  const pathname = usePathname()
-  const { toast } = useToast()
-  const [loading, setLoading] = useState<boolean>(false)
-  const [isDomain, setIsDomain] = useState<string | undefined>(undefined)
-  const router = useRouter()
+  const pathname = usePathname();
+  const { toast } = useToast();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isDomain, setIsDomain] = useState<string | undefined>(undefined);
+  const router = useRouter();
 
   useEffect(() => {
-    setIsDomain(pathname.split('/').pop())
-  }, [pathname])
+    setIsDomain(pathname.split('/').pop());
+  }, [pathname]);
 
   const onAddDomain = handleSubmit(async (values: FieldValues) => {
-    setLoading(true)
-    const uploaded = await upload.uploadFile(values.image[0])
-    const domain = await onIntegrateDomain(values.domain, uploaded.uuid)
+    setLoading(true);
+    const uploaded = await upload.uploadFile(values.image[0]);
+    const domain = await onIntegrateDomain(values.domain, uploaded.uuid);
     if (domain) {
-      reset()
-      setLoading(false)
+      reset();
+      setLoading(false);
       toast({
         title: domain.status == 200 ? 'Sucesso' : 'Error',
         description: domain.message,
-      })
-      router.refresh()
+      });
+      router.refresh();
     }
-  })
+  });
 
   return {
     register,
@@ -54,5 +53,5 @@ export const useDomain = () => {
     errors,
     loading,
     isDomain,
-  }
-}
+  };
+};

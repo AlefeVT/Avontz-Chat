@@ -1,38 +1,35 @@
-'use client'
+'use client';
 
-import React from 'react'
-import TabsMenu from '../tabs'
-import { TABS_MENU } from '@/constants/menu'
-import { TabsContent } from '../ui/tabs'
-import { Loader } from '../loader'
-import { CardDescription } from '../ui/card'
-import { Separator } from '../ui/separator'
-import { useConversation } from '@/hooks/conversation/use-conversation'
-import ConversationSearch from './search'
-import ChatCard from './chat-card'
+import React from 'react';
+import TabsMenu from '../tabs';
+import { TABS_MENU } from '@/constants/menu';
+import { TabsContent } from '../ui/tabs';
+import { Loader } from '../loader';
+import { CardDescription } from '../ui/card';
+import { Separator } from '../ui/separator';
+import { useConversation } from '@/hooks/conversation/use-conversation';
+import ConversationSearch from './search';
+import ChatCard from './chat-card';
 
 type Props = {
   domains?:
     | {
-        name: string
-        id: string
-        icon: string
+        name: string;
+        id: string;
+        icon: string;
       }[]
-    | undefined
-}
+    | undefined;
+};
 
 const ConversationMenu = ({ domains }: Props) => {
   const { register, chatRooms, loading, onGetActiveChatMessages } =
-    useConversation()
+    useConversation();
 
   return (
     <div className="py-3 px-0">
       <TabsMenu triggers={TABS_MENU}>
         <TabsContent value="não lidos">
-          <ConversationSearch
-            domains={domains}
-            register={register}
-          />
+          <ConversationSearch domains={domains} register={register} />
           <div className="flex flex-col">
             <Loader loading={loading}>
               {chatRooms.length ? (
@@ -48,35 +45,28 @@ const ConversationMenu = ({ domains }: Props) => {
                   />
                 ))
               ) : (
-                <CardDescription>Nenhum bate-papo para seu domínio</CardDescription>
+                <CardDescription>
+                  Nenhum bate-papo para seu domínio
+                </CardDescription>
               )}
             </Loader>
           </div>
         </TabsContent>
         <TabsContent value="todos">
-          <Separator
-            orientation="horizontal"
-            className="mt-5"
-          />
+          <Separator orientation="horizontal" className="mt-5" />
           todos
         </TabsContent>
         <TabsContent value="expirados">
-          <Separator
-            orientation="horizontal"
-            className="mt-5"
-          />
+          <Separator orientation="horizontal" className="mt-5" />
           expirado
         </TabsContent>
         <TabsContent value="favoritos">
-          <Separator
-            orientation="horizontal"
-            className="mt-5"
-          />
+          <Separator orientation="horizontal" className="mt-5" />
           favoritado
         </TabsContent>
       </TabsMenu>
     </div>
-  )
-}
+  );
+};
 
-export default ConversationMenu
+export default ConversationMenu;

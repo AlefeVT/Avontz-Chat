@@ -1,17 +1,17 @@
-import { onLoginUser } from '@/actions/auth'
-import SideBar from '@/components/sidebar'
-import { ChatProvider } from '@/context/use-chat-context'
+import { onLoginUser } from '@/actions/auth';
+import SideBar from '@/components/sidebar';
+import { ChatProvider } from '@/context/use-chat-context';
 
-import React from 'react'
+import React from 'react';
 
 type Props = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const OwnerLayout = async ({ children }: Props) => {
-  const authenticated = await onLoginUser()
+  const authenticated = await onLoginUser();
   if (!authenticated) {
-    console.log("User not authenticated");
+    console.log('User not authenticated');
     return null;
   }
 
@@ -24,7 +24,7 @@ const OwnerLayout = async ({ children }: Props) => {
         </div>
       </div>
     </ChatProvider>
-  )
-}
+  );
+};
 
-export default OwnerLayout
+export default OwnerLayout;

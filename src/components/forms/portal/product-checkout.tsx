@@ -1,26 +1,26 @@
-'use client'
-import React from 'react'
+'use client';
+import React from 'react';
 // import { loadStripe } from '@stripe/stripe-js'
-import { useStripeCustomer } from '@/hooks/billing/use-billing'
-import { Loader } from '@/components/loader'
-import { Card } from '@/components/ui/card'
+import { useStripeCustomer } from '@/hooks/billing/use-billing';
+import { Loader } from '@/components/loader';
+import { Card } from '@/components/ui/card';
 // import { Elements } from '@stripe/react-stripe-js'
-import Image from 'next/image'
-import { CustomerPaymentForm } from './payment-form'
+import Image from 'next/image';
+import { CustomerPaymentForm } from './payment-form';
 
 type Props = {
-  onBack(): void
+  onBack(): void;
   products?:
     | {
-        name: string
-        image: string
-        price: number
+        name: string;
+        image: string;
+        price: number;
       }[]
-    | undefined
-  amount?: number
-  onNext(): void
-  stripeId?: string
-}
+    | undefined;
+  amount?: number;
+  onNext(): void;
+  stripeId?: string;
+};
 
 const PaymentCheckout = ({
   onBack,
@@ -29,13 +29,13 @@ const PaymentCheckout = ({
   products,
   stripeId,
 }: Props) => {
-//   const StripePromise = loadStripe(
-//     process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY!,
-//     {
-//       stripeAccount: stripeId!,
-//     }
-//   )
-  const { stripeSecret, loadForm } = useStripeCustomer(amount!, stripeId!)
+  //   const StripePromise = loadStripe(
+  //     process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY!,
+  //     {
+  //       stripeAccount: stripeId!,
+  //     }
+  //   )
+  const { stripeSecret, loadForm } = useStripeCustomer(amount!, stripeId!);
 
   return (
     <Loader loading={loadForm}>
@@ -48,10 +48,7 @@ const PaymentCheckout = ({
             <h2 className="text-3xl font-bold mb-5">${amount}</h2>
             {products &&
               products.map((product, key) => (
-                <Card
-                  key={key}
-                  className="w-full flex gap-2 p-3"
-                >
+                <Card key={key} className="w-full flex gap-2 p-3">
                   <div className="w-2/12 aspect-square relative">
                     <Image
                       src={`https://ucarecdn.com/${product.image}/`}
@@ -81,7 +78,7 @@ const PaymentCheckout = ({
         </div>
       </div>
     </Loader>
-  )
-}
+  );
+};
 
-export default PaymentCheckout
+export default PaymentCheckout;

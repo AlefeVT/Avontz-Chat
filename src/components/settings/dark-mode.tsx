@@ -1,18 +1,17 @@
-'use client'
+'use client';
 
-import React from 'react'
-import Section from '../section-label'
-import { cn } from '@/lib/utils'
-import { SystemMode } from '../themes-placeholder/systemmode'
-import { LightMode } from '../themes-placeholder/lightmode'
-import { DarkMode } from '../themes-placeholder/darkmode'
-import { useThemeMode } from '@/hooks/settings/use-settings'
+import React from 'react';
+import Section from '../section-label';
+import { cn } from '@/lib/utils';
+import { SystemMode } from '../themes-placeholder/systemmode';
+import { LightMode } from '../themes-placeholder/lightmode';
+import { DarkMode } from '../themes-placeholder/darkmode';
+import { useThemeMode } from '@/hooks/settings/use-settings';
 
-
-type Props = {}
+type Props = {};
 
 const DarkModetoggle = (props: Props) => {
-  const { setTheme, theme } = useThemeMode()
+  const { setTheme, theme } = useThemeMode();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
@@ -52,7 +51,7 @@ const DarkModetoggle = (props: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DarkModetoggle
+export default DarkModetoggle;

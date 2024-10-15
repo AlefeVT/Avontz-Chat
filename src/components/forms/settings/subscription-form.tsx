@@ -1,17 +1,17 @@
-'use client'
-import { Loader } from '@/components/loader'
-import SubscriptionCard from '@/components/settings/subscription-card'
-import { Button } from '@/components/ui/button'
-import { useSubscriptions } from '@/hooks/billing/use-billing'
-import React from 'react'
+'use client';
+import { Loader } from '@/components/loader';
+import SubscriptionCard from '@/components/settings/subscription-card';
+import { Button } from '@/components/ui/button';
+import { useSubscriptions } from '@/hooks/billing/use-billing';
+import React from 'react';
 
 type Props = {
-  plan: 'Simples' | 'Ultimate' | 'Plus'
-}
+  plan: 'Simples' | 'Ultimate' | 'Plus';
+};
 
 const SubscriptionForm = ({ plan }: Props) => {
   const { loading, onSetPayment, payment, onUpdatetToFreTier } =
-    useSubscriptions(plan)
+    useSubscriptions(plan);
 
   return (
     <Loader loading={loading}>
@@ -52,7 +52,7 @@ const SubscriptionForm = ({ plan }: Props) => {
         )}
       </div>
     </Loader>
-  )
-}
+  );
+};
 
-export default SubscriptionForm
+export default SubscriptionForm;

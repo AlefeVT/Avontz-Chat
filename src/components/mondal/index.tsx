@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Dialog,
   DialogContent,
@@ -6,19 +6,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
-import { ArrowBigLeftIcon, ArrowLeft, ArrowRight } from 'lucide-react'
-import Image from 'next/image'
-import { Logo, LogoMini, LogoSidebar } from '../logo'
+} from '@/components/ui/dialog';
+import { ArrowBigLeftIcon, ArrowLeft, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { Logo, LogoMini, LogoSidebar } from '../logo';
 
 type Props = {
-  trigger: React.ReactNode
-  children: React.ReactNode
-  title: string
-  description: string
-  type?: 'Integration'
-  logo?: string
-}
+  trigger: React.ReactNode;
+  children: React.ReactNode;
+  title: string;
+  description: string;
+  type?: 'Integration';
+  logo?: string;
+};
 
 const Modal = ({
   trigger,
@@ -47,7 +47,7 @@ const Modal = ({
                   src={`https://ucarecdn.com/${logo}/`}
                   fill
                   alt="Stripe"
-                  className='rounded-md'
+                  className="rounded-md"
                 />
               </div>
             </div>
@@ -60,7 +60,7 @@ const Modal = ({
             {children}
           </DialogContent>
         </Dialog>
-      )
+      );
     default:
       return (
         <Dialog>
@@ -73,8 +73,8 @@ const Modal = ({
             {children}
           </DialogContent>
         </Dialog>
-      )
+      );
   }
-}
+};
 
-export default Modal
+export default Modal;

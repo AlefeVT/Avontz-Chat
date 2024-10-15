@@ -1,24 +1,24 @@
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { strict } from 'assert'
-import { ErrorMessage } from '@hookform/error-message'
-import React from 'react'
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import { Textarea } from '@/components/ui/textarea'
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { strict } from 'assert';
+import { ErrorMessage } from '@hookform/error-message';
+import React from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { Textarea } from '@/components/ui/textarea';
 
 type Props = {
-  type: 'text' | 'email' | 'password'
-  inputType: 'select' | 'input' | 'textarea'
-  options?: { value: string; label: string; id: string }[]
-  label?: string
-  placeholder: string
-  register: UseFormRegister<any>
-  name: string
-  errors: FieldErrors<FieldValues>
-  lines?: number
-  form?: string
-  defaultValue?: string
-}
+  type: 'text' | 'email' | 'password';
+  inputType: 'select' | 'input' | 'textarea';
+  options?: { value: string; label: string; id: string }[];
+  label?: string;
+  placeholder: string;
+  register: UseFormRegister<any>;
+  name: string;
+  errors: FieldErrors<FieldValues>;
+  lines?: number;
+  form?: string;
+  defaultValue?: string;
+};
 
 const FormGenerator = ({
   errors,
@@ -37,10 +37,7 @@ const FormGenerator = ({
     case 'input':
     default:
       return (
-        <Label
-          className="flex flex-col gap-2"
-          htmlFor={`input-${label}`}
-        >
+        <Label className="flex flex-col gap-2" htmlFor={`input-${label}`}>
           {label && label}
           <Input
             id={`input-${label}`}
@@ -60,22 +57,15 @@ const FormGenerator = ({
             )}
           />
         </Label>
-      )
+      );
     case 'select':
       return (
         <Label htmlFor={`select-${label}`}>
           {label && label}
-          <select
-            form={form}
-            id={`select-${label}`}
-            {...register(name)}
-          >
+          <select form={form} id={`select-${label}`} {...register(name)}>
             {options?.length &&
               options.map((option) => (
-                <option
-                  value={option.value}
-                  key={option.id}
-                >
+                <option value={option.value} key={option.id}>
                   {option.label}
                 </option>
               ))}
@@ -90,13 +80,10 @@ const FormGenerator = ({
             )}
           />
         </Label>
-      )
+      );
     case 'textarea':
       return (
-        <Label
-          className="flex flex-col gap-2"
-          htmlFor={`input-${label}`}
-        >
+        <Label className="flex flex-col gap-2" htmlFor={`input-${label}`}>
           {label && label}
           <Textarea
             form={form}
@@ -116,9 +103,9 @@ const FormGenerator = ({
             )}
           />
         </Label>
-      )
-      defualt: return <></>
+      );
+      defualt: return <></>;
   }
-}
+};
 
-export default FormGenerator
+export default FormGenerator;

@@ -1,7 +1,6 @@
-
 import { Logo } from '@/components/logo';
-import NavBar from '@/components/navbar'
-import { Button } from '@/components/ui/button'
+import NavBar from '@/components/navbar';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -9,15 +8,14 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/card';
 import { pricingCards } from '@/constants/landing-page';
-import clsx from 'clsx'
-import { Check } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import clsx from 'clsx';
+import { Check } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function Home() {
-
   return (
     <main>
       <NavBar />
@@ -29,13 +27,11 @@ export default async function Home() {
 
           <Logo />
           <p className="text-center max-w-[500px]">
-            Seu assistente com tecnologia de IA! Incorpore Avontz-Chat em qualquer site
-            com apenas um trecho de código!
+            Seu assistente com tecnologia de IA! Incorpore Avontz-Chat em
+            qualquer site com apenas um trecho de código!
           </p>
           <Button className="bg-blue font-bold text-white px-4">
-            <Link href={'/auth/sign-up'}>
-            Comece de graça
-            </Link>
+            <Link href={'/auth/sign-up'}>Comece de graça</Link>
           </Button>
           <Image
             src="/images/ilustracao_phone.png"
@@ -47,14 +43,19 @@ export default async function Home() {
         </div>
       </section>
       <section className="flex justify-center items-center flex-col gap-4 mt-10">
-        <h2 className="text-4xl text-center"> Escolha o que combina com você</h2>
+        <h2 className="text-4xl text-center">
+          {' '}
+          Escolha o que combina com você
+        </h2>
         <p className="text-muted-foreground text-center max-w-lg">
-          Nossos planos de preços simples são adaptados para atender às suas necessidades. Se
-          {"você"} não está pronto para se comprometer, você pode começar gratuitamente.
+          Nossos planos de preços simples são adaptados para atender às suas
+          necessidades. Se
+          {'você'} não está pronto para se comprometer, você pode começar
+          gratuitamente.
         </p>
       </section>
       <div className="flex  justify-center gap-4 flex-wrap mt-6">
-      {pricingCards.map((card) => (
+        {pricingCards.map((card) => (
           <Card
             key={card.title}
             className={clsx('w-[300px] flex flex-col justify-between', {
@@ -76,10 +77,7 @@ export default async function Home() {
             <CardFooter className="flex flex-col items-start gap-4">
               <div>
                 {card.features.map((feature) => (
-                  <div
-                    key={feature}
-                    className="flex gap-2"
-                  >
+                  <div key={feature} className="flex gap-2">
                     <Check />
                     <p>{feature}</p>
                   </div>
@@ -99,12 +97,11 @@ export default async function Home() {
       <section className="flex justify-center items-center flex-col gap-4 mt-28">
         <h2 className="text-4xl text-center">Sala de Notícias</h2>
         <p className="text-muted-foreground text-center max-w-lg">
-          Explore nossos insights sobre IA, tecnologia e otimização de seus negócios.
+          Explore nossos insights sobre IA, tecnologia e otimização de seus
+          negócios.
         </p>
       </section>
-      <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8">
-
-      </section>
+      <section className="md:grid-cols-3 grid-cols-1 grid gap-5 container mt-8"></section>
     </main>
-  )
+  );
 }

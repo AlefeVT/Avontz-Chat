@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const DocumentsIcon = (props: Props) => {
   return (
@@ -33,7 +33,7 @@ const DocumentsIcon = (props: Props) => {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default DocumentsIcon
+export default DocumentsIcon;

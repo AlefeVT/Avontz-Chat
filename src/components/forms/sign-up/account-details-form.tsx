@@ -1,18 +1,19 @@
-
-import React from 'react'
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import { USER_REGISTRATION_FORM } from '@/constants/forms'
-import FormGenerator from '../form-generator'
+import React from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { USER_REGISTRATION_FORM } from '@/constants/forms';
+import FormGenerator from '../form-generator';
 
 type Props = {
-  register: UseFormRegister<FieldValues>
-  errors: FieldErrors<FieldValues>
-}
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+};
 
 function AccountDetailsForm({ errors, register }: Props) {
   return (
     <>
-      <h2 className="text-slateBlue md:text-4xl font-bold">Detalhes da conta</h2>
+      <h2 className="text-slateBlue md:text-4xl font-bold">
+        Detalhes da conta
+      </h2>
       <p className="text-iridium md:text-sm">Digite seu e-mail e senha</p>
       {USER_REGISTRATION_FORM.map((field) => (
         <FormGenerator
@@ -24,7 +25,7 @@ function AccountDetailsForm({ errors, register }: Props) {
         />
       ))}
     </>
-  )
+  );
 }
 
-export default AccountDetailsForm
+export default AccountDetailsForm;

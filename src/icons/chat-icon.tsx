@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const ChatIcon = (props: Props) => {
   return (
@@ -40,7 +40,7 @@ const ChatIcon = (props: Props) => {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default ChatIcon
+export default ChatIcon;

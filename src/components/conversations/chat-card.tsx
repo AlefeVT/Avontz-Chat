@@ -1,19 +1,19 @@
-'use client'
-import { useChatTime } from '@/hooks/conversation/use-conversation'
-import React from 'react'
-import { Card, CardContent, CardDescription } from '../ui/card'
-import { Avatar, AvatarFallback } from '../ui/avatar'
-import { User } from 'lucide-react'
-import { UrgentIcon } from '@/icons/urgent-icon'
+'use client';
+import { useChatTime } from '@/hooks/conversation/use-conversation';
+import React from 'react';
+import { Card, CardContent, CardDescription } from '../ui/card';
+import { Avatar, AvatarFallback } from '../ui/avatar';
+import { User } from 'lucide-react';
+import { UrgentIcon } from '@/icons/urgent-icon';
 
 type Props = {
-  title: string
-  description?: string
-  createdAt: Date
-  id: string
-  onChat(): void
-  seen?: boolean
-}
+  title: string;
+  description?: string;
+  createdAt: Date;
+  id: string;
+  onChat(): void;
+  seen?: boolean;
+};
 
 const ChatCard = ({
   title,
@@ -23,7 +23,7 @@ const ChatCard = ({
   id,
   seen,
 }: Props) => {
-  const { messageSentAt, urgent } = useChatTime(createdAt, id)
+  const { messageSentAt, urgent } = useChatTime(createdAt, id);
 
   return (
     <Card
@@ -60,7 +60,7 @@ const ChatCard = ({
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ChatCard
+export default ChatCard;

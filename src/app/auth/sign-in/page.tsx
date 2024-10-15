@@ -1,10 +1,8 @@
-
-
-import SignInFormProvider from '@/components/forms/sign-in/form.provider'
-import LoginForm from '@/components/forms/sign-in/login-form'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import React from 'react'
+import SignInFormProvider from '@/components/forms/sign-in/form.provider';
+import LoginForm from '@/components/forms/sign-in/login-form';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import React from 'react';
 
 const SignInPage = () => {
   return (
@@ -14,18 +12,12 @@ const SignInPage = () => {
           <div className="flex flex-col gap-3">
             <LoginForm />
             <div className="w-full flex flex-col gap-3 items-center">
-              <Button
-                type="submit"
-                className="w-full"
-              >
+              <Button type="submit" className="w-full">
                 Enviar
               </Button>
               <p>
-              Não tem uma conta?{' '}
-                <Link
-                  href="/auth/sign-up"
-                  className="font-bold"
-                >
+                Não tem uma conta?{' '}
+                <Link href="/auth/sign-up" className="font-bold">
                   Crie uma
                 </Link>
               </p>
@@ -34,7 +26,7 @@ const SignInPage = () => {
         </SignInFormProvider>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignInPage
+export default SignInPage;

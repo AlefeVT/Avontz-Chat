@@ -1,23 +1,20 @@
-'use client'
-import React from 'react'
-import { Button } from '../ui/button'
-import { Loader } from '../loader'
-import { useStripe } from '@/hooks/billing/use-billing'
+'use client';
+import React from 'react';
+import { Button } from '../ui/button';
+import { Loader } from '../loader';
+import { useStripe } from '@/hooks/billing/use-billing';
 
 type StripeConnectProps = {
-  connected: boolean
-}
+  connected: boolean;
+};
 
 export const StripeConnect = ({ connected }: StripeConnectProps) => {
-  const { onStripeConnect, onStripeAccountPending } = useStripe()
+  const { onStripeConnect, onStripeAccountPending } = useStripe();
   return (
-    <Button
-      disabled={connected}
-      onClick={onStripeConnect}
-    >
+    <Button disabled={connected} onClick={onStripeConnect}>
       <Loader loading={onStripeAccountPending}>
         {connected ? 'Conectado' : 'Conecte-se à faixa'}
       </Loader>
     </Button>
-  )
-}
+  );
+};

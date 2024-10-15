@@ -1,17 +1,16 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { Card, CardContent, CardDescription } from '../ui/card'
-import Image from 'next/image'
-import IntegrationTrigger from './IntegrationTrigger'
-import { INTEGRATION_LIST_ITEMS } from '@/constants/integrations'
-
+import React from 'react';
+import { Card, CardContent, CardDescription } from '../ui/card';
+import Image from 'next/image';
+import IntegrationTrigger from './IntegrationTrigger';
+import { INTEGRATION_LIST_ITEMS } from '@/constants/integrations';
 
 type Props = {
   connections: {
-    stripe: boolean
-  }
-}
+    stripe: boolean;
+  };
+};
 
 const IntegrationsList = ({ connections }: Props) => {
   return (
@@ -26,7 +25,7 @@ const IntegrationsList = ({ connections }: Props) => {
                     sizes="100vw"
                     src={`https://ucarecdn.com/${item.logo}/`}
                     alt="Logo"
-                    className='rounded-md'
+                    className="rounded-md"
                     fill
                   />
                 </div>
@@ -45,7 +44,7 @@ const IntegrationsList = ({ connections }: Props) => {
         </Card>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default IntegrationsList
+export default IntegrationsList;

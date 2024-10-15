@@ -1,13 +1,13 @@
-import React from 'react'
-import { cn } from '@/lib/utils'
-import { Spinner } from '../spinner'
+import React from 'react';
+import { cn } from '@/lib/utils';
+import { Spinner } from '../spinner';
 
 type LoaderProps = {
-  loading: boolean
-  children: React.ReactNode
-  className?: string
-  noPadding?: boolean
-}
+  loading: boolean;
+  children: React.ReactNode;
+  className?: string;
+  noPadding?: boolean;
+};
 
 export const Loader = ({
   loading,
@@ -21,5 +21,5 @@ export const Loader = ({
     </div>
   ) : (
     children
-  )
-}
+  );
+};

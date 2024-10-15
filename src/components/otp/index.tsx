@@ -1,18 +1,14 @@
-import React from 'react'
-import { InputOTP, InputOTPSlot } from '../ui/input-otp'
+import React from 'react';
+import { InputOTP, InputOTPSlot } from '../ui/input-otp';
 
 type Props = {
-  otp: string
-  setOtp: React.Dispatch<React.SetStateAction<string>>
-}
+  otp: string;
+  setOtp: React.Dispatch<React.SetStateAction<string>>;
+};
 
 const OTPInput = ({ otp, setOtp }: Props) => {
   return (
-    <InputOTP
-      maxLength={6}
-      value={otp}
-      onChange={(otp) => setOtp(otp)}
-    >
+    <InputOTP maxLength={6} value={otp} onChange={(otp) => setOtp(otp)}>
       <div className="flex gap-3">
         <div>
           <InputOTPSlot index={0} />
@@ -34,7 +30,7 @@ const OTPInput = ({ otp, setOtp }: Props) => {
         </div>
       </div>
     </InputOTP>
-  )
-}
+  );
+};
 
-export default OTPInput
+export default OTPInput;
