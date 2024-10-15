@@ -1,10 +1,10 @@
-import InfoBar from '@/components/infobar'
-import BillingSettings from '@/components/settings/billing-settings'
-import ChangePassword from '@/components/settings/change-password'
-import DarkModetoggle from '@/components/settings/dark-mode'
-import React from 'react'
+import InfoBar from '@/components/infobar';
+import BillingSettings from '@/components/settings/billing-settings';
+import ChangePassword from '@/components/settings/change-password';
+import DarkModetoggle from '@/components/settings/dark-mode';
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const Page = (props: Props) => {
   return (
@@ -16,7 +16,7 @@ const Page = (props: Props) => {
         <ChangePassword />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

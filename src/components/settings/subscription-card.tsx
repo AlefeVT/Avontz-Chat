@@ -1,17 +1,17 @@
-import React from 'react'
-import { Label } from '../ui/label'
-import { cn } from '@/lib/utils'
-import { Card, CardContent, CardDescription, CardTitle } from '../ui/card'
-import { Input } from '../ui/input'
+import React from 'react';
+import { Label } from '../ui/label';
+import { cn } from '@/lib/utils';
+import { Card, CardContent, CardDescription, CardTitle } from '../ui/card';
+import { Input } from '../ui/input';
 
 type Props = {
-  title: string
-  description: string
-  price: string
-  onPayment(payment: string): void
-  payment: string
-  id: string
-}
+  title: string;
+  description: string;
+  price: string;
+  onPayment(payment: string): void;
+  payment: string;
+  id: string;
+};
 
 const SubscriptionCard = ({
   title,
@@ -24,10 +24,7 @@ const SubscriptionCard = ({
   return (
     <Label htmlFor={id}>
       <Card
-        className={cn(
-          'w-full cursor-pointer',
-          payment == id && 'border-blue'
-        )}
+        className={cn('w-full cursor-pointer', payment == id && 'border-blue')}
       >
         <CardContent className="flex justify-between p-2">
           <div className="flex items-center gap-3">
@@ -59,7 +56,7 @@ const SubscriptionCard = ({
         </CardContent>
       </Card>
     </Label>
-  )
-}
+  );
+};
 
-export default SubscriptionCard
+export default SubscriptionCard;

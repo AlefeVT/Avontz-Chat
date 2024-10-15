@@ -1,14 +1,13 @@
-
-import { TabsContent } from '@/components/ui/tabs'
-import { HELP_DESK_TABS_MENU } from '@/constants/menu'
-import React from 'react'
-import HelpDesk from './help-desk'
-import FilterQuestions from './filter-questions'
-import TabsMenu from '@/components/tabs'
+import { TabsContent } from '@/components/ui/tabs';
+import { HELP_DESK_TABS_MENU } from '@/constants/menu';
+import React from 'react';
+import HelpDesk from './help-desk';
+import FilterQuestions from './filter-questions';
+import TabsMenu from '@/components/tabs';
 
 type Props = {
-  id: string
-}
+  id: string;
+};
 
 const BotTrainingForm = ({ id }: Props) => {
   return (
@@ -16,15 +15,12 @@ const BotTrainingForm = ({ id }: Props) => {
       <div className="flex flex-col gap-2">
         <h2 className="font-bold text-2xl">Treinamento de bots</h2>
         <p className="text-sm font-light">
-        Defina perguntas frequentes, crie perguntas para capturar informações de leads e
-        treine seu bot para agir da maneira que você deseja.
+          Defina perguntas frequentes, crie perguntas para capturar informações
+          de leads e treine seu bot para agir da maneira que você deseja.
         </p>
       </div>
       <TabsMenu triggers={HELP_DESK_TABS_MENU}>
-        <TabsContent
-          value="suporte"
-          className="w-full"
-        >
+        <TabsContent value="suporte" className="w-full">
           <HelpDesk id={id} />
         </TabsContent>
         <TabsContent value="perguntas">
@@ -32,7 +28,7 @@ const BotTrainingForm = ({ id }: Props) => {
         </TabsContent>
       </TabsMenu>
     </div>
-  )
-}
+  );
+};
 
-export default BotTrainingForm
+export default BotTrainingForm;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import { Card } from '../ui/card'
-import { Headphones, Star, Trash } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import BreadCrumb from './bread-crump'
+import { Card } from '../ui/card';
+import { Headphones, Star, Trash } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import BreadCrumb from './bread-crump';
 
-type Props = {}
+type Props = {};
 
 const InfoBar = (props: Props) => {
   return (
@@ -24,15 +24,12 @@ const InfoBar = (props: Props) => {
           </AvatarFallback>
         </Avatar>
         <Avatar>
-          <AvatarImage
-            src="https://github.com/shadcn.png"
-            alt="@shadcn"
-          />
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InfoBar
+export default InfoBar;

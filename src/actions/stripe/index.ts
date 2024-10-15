@@ -1,14 +1,14 @@
-'use server'
+'use server';
 
-import { client } from '@/lib/prisma'
-import { currentUser } from '@clerk/nextjs/server'
+import { client } from '@/lib/prisma';
+import { currentUser } from '@clerk/nextjs/server';
 
-import Stripe from 'stripe'
+import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET!, {
   typescript: true,
   apiVersion: '2024-09-30.acacia',
-})
+});
 
 export const onCreateCustomerPaymentIntentSecret = async (
   amount: number,
@@ -24,22 +24,22 @@ export const onCreateCustomerPaymentIntentSecret = async (
         },
       },
       { stripeAccount: stripeId }
-    )
+    );
 
     if (paymentIntent) {
-      return { secret: paymentIntent.client_secret }
+      return { secret: paymentIntent.client_secret };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onUpdateSubscription = async (
   plan: 'Simples' | 'Ultimate' | 'Plus'
 ) => {
   try {
-    const user = await currentUser()
-    if (!user) return
+    const user = await currentUser();
+    if (!user) return;
     const update = await client.user.update({
       where: {
         clerkId: user.id,
@@ -61,46 +61,46 @@ export const onUpdateSubscription = async (
           },
         },
       },
-    })
+    });
     if (update) {
       return {
         status: 200,
         message: 'subscription updated',
         plan: update.subscription?.plan,
-      }
+      };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const setPlanAmount = (item: 'Simples' | 'Ultimate' | 'Plus') => {
   if (item == 'Ultimate') {
-    return 1500
+    return 1500;
   }
   if (item == 'Plus') {
-    return 3500
+    return 3500;
   }
-  return 0
-}
+  return 0;
+};
 
 export const onGetStripeClientSecret = async (
   item: 'Simples' | 'Ultimate' | 'Plus'
 ) => {
   try {
-    const amount = setPlanAmount(item)
+    const amount = setPlanAmount(item);
     const paymentIntent = await stripe.paymentIntents.create({
       currency: 'usd',
       amount: amount,
       automatic_payment_methods: {
         enabled: true,
       },
-    })
+    });
 
     if (paymentIntent) {
-      return { secret: paymentIntent.client_secret }
+      return { secret: paymentIntent.client_secret };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

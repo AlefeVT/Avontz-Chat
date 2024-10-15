@@ -1,14 +1,14 @@
-import { CheckCircle2Icon } from 'lucide-react'
-import React from 'react'
-import { Button } from '../ui/button'
-import { StripeConnect } from '../settings/stripe-connect'
+import { CheckCircle2Icon } from 'lucide-react';
+import React from 'react';
+import { Button } from '../ui/button';
+import { StripeConnect } from '../settings/stripe-connect';
 
 type IntegrationModalBodyProps = {
-  type: string 
+  type: string;
   connections: {
-    [key in 'stripe']: boolean
-  }
-}
+    [key in 'stripe']: boolean;
+  };
+};
 
 export const IntegrationModalBody = ({
   type,
@@ -25,10 +25,7 @@ export const IntegrationModalBody = ({
             'Informações comerciais e fiscais',
             'Criar e atualizar produtos',
           ].map((item, key) => (
-            <div
-              key={key}
-              className="flex gap-2 items-center pl-3"
-            >
+            <div key={key} className="flex gap-2 items-center pl-3">
               <CheckCircle2Icon />
               <p>{item}</p>
             </div>
@@ -38,8 +35,8 @@ export const IntegrationModalBody = ({
             <StripeConnect connected={connections[type]} />
           </div>
         </div>
-      )
+      );
     default:
-      return <></>
+      return <></>;
   }
-}
+};

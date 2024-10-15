@@ -1,24 +1,23 @@
-'use client'
-import useSideBar from '@/context/use-sidebar'
-import { cn } from '@/lib/utils'
-import React from 'react'
-import MaxMenu from './maximized-menu'
-import { MinMenu } from './minimized-menu'
-
+'use client';
+import useSideBar from '@/context/use-sidebar';
+import { cn } from '@/lib/utils';
+import React from 'react';
+import MaxMenu from './maximized-menu';
+import { MinMenu } from './minimized-menu';
 
 type Props = {
   domains:
     | {
-        id: string
-        name: string
-        icon: string
+        id: string;
+        name: string;
+        icon: string;
       }[]
     | null
-    | undefined
-}
+    | undefined;
+};
 
 const SideBar = ({ domains }: Props) => {
-  const { expand, onExpand, page, onSignOut } = useSideBar()
+  const { expand, onExpand, page, onSignOut } = useSideBar();
 
   return (
     <div
@@ -46,7 +45,7 @@ const SideBar = ({ domains }: Props) => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;

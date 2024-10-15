@@ -1,36 +1,36 @@
-'use client'
+'use client';
 
-import { cn } from '@/lib/utils'
-import React, { useEffect } from 'react'
-import PortalSteps from './portal-steps'
-import { usePortal } from '@/hooks/portal/use-portal'
+import { cn } from '@/lib/utils';
+import React, { useEffect } from 'react';
+import PortalSteps from './portal-steps';
+import { usePortal } from '@/hooks/portal/use-portal';
 
 type PortalFormProps = {
   questions: {
-    id: string
-    question: string
-    answered: string | null
-  }[]
-  type: 'Appointment' | 'Payment'
-  customerId: string
-  domainid: string
-  email: string
+    id: string;
+    question: string;
+    answered: string | null;
+  }[];
+  type: 'Appointment' | 'Payment';
+  customerId: string;
+  domainid: string;
+  email: string;
   bookings?:
     | {
-        date: Date
-        slot: string
+        date: Date;
+        slot: string;
       }[]
-    | undefined
+    | undefined;
   products?:
     | {
-        name: string
-        image: string
-        price: number
+        name: string;
+        image: string;
+        price: number;
       }[]
-    | undefined
-  amount?: number
-  stripeId?: string
-}
+    | undefined;
+  amount?: number;
+  stripeId?: string;
+};
 
 const PortalForm = ({
   questions,
@@ -55,13 +55,13 @@ const PortalForm = ({
     onSelectedTimeSlot,
     selectedSlot,
     loading,
-  } = usePortal(customerId, domainid, email)
+  } = usePortal(customerId, domainid, email);
 
   useEffect(() => {
     if (questions.every((question) => question.answered)) {
-      onNext()
+      onNext();
     }
-  }, [])
+  }, []);
 
   return (
     <form
@@ -105,7 +105,7 @@ const PortalForm = ({
         </div>
       )}
     </form>
-  )
-}
+  );
+};
 
-export default PortalForm
+export default PortalForm;

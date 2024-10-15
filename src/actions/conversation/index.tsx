@@ -1,7 +1,7 @@
-'use server'
+'use server';
 
-import { client } from '@/lib/prisma'
-import { pusherServer } from '@/lib/utils'
+import { client } from '@/lib/prisma';
+import { pusherServer } from '@/lib/utils';
 
 export const onToggleRealtime = async (id: string, state: boolean) => {
   try {
@@ -16,7 +16,7 @@ export const onToggleRealtime = async (id: string, state: boolean) => {
         id: true,
         live: true,
       },
-    })
+    });
 
     if (chatRoom) {
       return {
@@ -25,12 +25,12 @@ export const onToggleRealtime = async (id: string, state: boolean) => {
           ? 'Modo em tempo real ativado'
           : 'Modo em tempo real desativado',
         chatRoom,
-      }
+      };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetConversationMode = async (id: string) => {
   try {
@@ -41,13 +41,13 @@ export const onGetConversationMode = async (id: string) => {
       select: {
         live: true,
       },
-    })
-    console.log(mode)
-    return mode
+    });
+    console.log(mode);
+    return mode;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetDomainChatRooms = async (id: string) => {
   try {
@@ -79,15 +79,15 @@ export const onGetDomainChatRooms = async (id: string) => {
           },
         },
       },
-    })
+    });
 
     if (domains) {
-      return domains
+      return domains;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetChatMessages = async (id: string) => {
   try {
@@ -111,17 +111,15 @@ export const onGetChatMessages = async (id: string) => {
           },
         },
       },
-    })
+    });
 
     if (messages) {
-      return messages
+      return messages;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
-
-
+};
 
 export const onViewUnReadMessages = async (id: string) => {
   try {
@@ -132,11 +130,11 @@ export const onViewUnReadMessages = async (id: string) => {
       data: {
         seen: true,
       },
-    })
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onRealTimeChat = async (
   chatroomId: string,
@@ -150,8 +148,8 @@ export const onRealTimeChat = async (
       id,
       role,
     },
-  })
-}
+  });
+};
 
 export const onOwnerSendMessage = async (
   chatroom: string,
@@ -186,12 +184,12 @@ export const onOwnerSendMessage = async (
           take: 1,
         },
       },
-    })
+    });
 
     if (chat) {
-      return chat
+      return chat;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

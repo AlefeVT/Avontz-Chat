@@ -1,20 +1,20 @@
-'use client'
-import { Card, CardContent, CardDescription } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { cn } from '@/lib/utils'
-import { User } from 'lucide-react'
-import React from 'react'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+'use client';
+import { Card, CardContent, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils';
+import { User } from 'lucide-react';
+import React from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 type Props = {
-  value: string
-  title: string
-  text: string
-  register: UseFormRegister<FieldValues>
-  userType: 'owner' | 'student'
-  setUserType: React.Dispatch<React.SetStateAction<'owner' | 'student'>>
-}
+  value: string;
+  title: string;
+  text: string;
+  register: UseFormRegister<FieldValues>;
+  userType: 'owner' | 'student';
+  setUserType: React.Dispatch<React.SetStateAction<'owner' | 'student'>>;
+};
 
 const UserTypeCard = ({
   register,
@@ -77,7 +77,7 @@ const UserTypeCard = ({
         </CardContent>
       </Card>
     </Label>
-  )
-}
+  );
+};
 
-export default UserTypeCard
+export default UserTypeCard;

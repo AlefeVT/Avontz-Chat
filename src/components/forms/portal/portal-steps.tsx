@@ -1,42 +1,42 @@
-import React from 'react'
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import BookAppointmentDate from './booking-date'
-import QuestionsForm from './questions'
-import PaymentCheckout from './product-checkout'
+import React from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import BookAppointmentDate from './booking-date';
+import QuestionsForm from './questions';
+import PaymentCheckout from './product-checkout';
 
 type Props = {
   questions: {
-    id: string
-    question: string
-    answered: string | null
-  }[]
-  type: 'Appointment' | 'Payment'
-  register: UseFormRegister<FieldValues>
-  error: FieldErrors<FieldValues>
-  onNext(): void
-  step: number
-  date: Date | undefined
-  onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>
-  onBack(): void
-  onSlot(slot: string): void
-  slot?: string
-  loading: boolean
+    id: string;
+    question: string;
+    answered: string | null;
+  }[];
+  type: 'Appointment' | 'Payment';
+  register: UseFormRegister<FieldValues>;
+  error: FieldErrors<FieldValues>;
+  onNext(): void;
+  step: number;
+  date: Date | undefined;
+  onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  onBack(): void;
+  onSlot(slot: string): void;
+  slot?: string;
+  loading: boolean;
   bookings?:
-  | {
-    date: Date
-    slot: string
-  }[]
-  | undefined
+    | {
+        date: Date;
+        slot: string;
+      }[]
+    | undefined;
   products?:
-  | {
-    name: string
-    image: string
-    price: number
-  }[]
-  | undefined
-  amount?: number
-  stripeId?: string
-}
+    | {
+        name: string;
+        image: string;
+        price: number;
+      }[]
+    | undefined;
+  amount?: number;
+  stripeId?: string;
+};
 
 const PortalSteps = ({
   questions,
@@ -64,7 +64,7 @@ const PortalSteps = ({
         onNext={onNext}
         questions={questions}
       />
-    )
+    );
   }
 
   if (step == 2 && type == 'Appointment') {
@@ -79,9 +79,8 @@ const PortalSteps = ({
         onSlot={onSlot}
         loading={loading}
       />
-    )
+    );
   }
-
 
   if (step == 2 && type == 'Payment') {
     return (
@@ -92,18 +91,19 @@ const PortalSteps = ({
         onNext={onNext}
         amount={amount}
       />
-    )
+    );
   }
 
   return (
     <div className="flex flex-col items-center gap-3">
       <h2 className="font-bold text-gray-600 text-4xl">Obrigado</h2>
       <p className="text-center">
-        Obrigado por dedicar seu tempo para preencher este formulário. Estamos ansiosos para
+        Obrigado por dedicar seu tempo para preencher este formulário. Estamos
+        ansiosos para
         <br /> falar com você em breve.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default PortalSteps
+export default PortalSteps;

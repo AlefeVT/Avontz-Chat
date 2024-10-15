@@ -1,30 +1,30 @@
-import { useDomain } from '@/hooks/sidebar/use-domain'
-import { cn } from '@/lib/utils'
-import React from 'react'
-import { Plus } from 'lucide-react'
-import { Loader } from '../loader'
-import FormGenerator from '../forms/form-generator'
+import { useDomain } from '@/hooks/sidebar/use-domain';
+import { cn } from '@/lib/utils';
+import React from 'react';
+import { Plus } from 'lucide-react';
+import { Loader } from '../loader';
+import FormGenerator from '../forms/form-generator';
 
-import { Button } from '../ui/button'
-import Link from 'next/link'
-import Image from 'next/image'
-import AppDrawer from '../drawer'
-import UploadButton from '../upload-button'
+import { Button } from '../ui/button';
+import Link from 'next/link';
+import Image from 'next/image';
+import AppDrawer from '../drawer';
+import UploadButton from '../upload-button';
 
 type Props = {
-  min?: boolean
+  min?: boolean;
   domains:
     | {
-        id: string
-        name: string
-        icon: string | null
+        id: string;
+        name: string;
+        icon: string | null;
       }[]
     | null
-    | undefined
-}
+    | undefined;
+};
 
 const DomainMenu = ({ domains, min }: Props) => {
-  const { register, onAddDomain, loading, errors, isDomain } = useDomain()
+  const { register, onAddDomain, loading, errors, isDomain } = useDomain();
 
   return (
     <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
@@ -58,10 +58,7 @@ const DomainMenu = ({ domains, min }: Props) => {
                 label="Carregar Ícone"
                 errors={errors}
               />
-              <Button
-                type="submit"
-                className="w-full"
-              >
+              <Button type="submit" className="w-full">
                 Adicionar Domínio
               </Button>
             </form>
@@ -91,7 +88,7 @@ const DomainMenu = ({ domains, min }: Props) => {
           ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DomainMenu
+export default DomainMenu;

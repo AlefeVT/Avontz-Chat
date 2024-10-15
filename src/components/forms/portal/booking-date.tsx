@@ -1,30 +1,30 @@
-import { Loader } from '@/components/loader'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
-import { Card, CardDescription } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { APPOINTMENT_TIME_SLOTS } from '@/constants/timeslots'
+import { Loader } from '@/components/loader';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Card, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { APPOINTMENT_TIME_SLOTS } from '@/constants/timeslots';
 
-import { cn } from '@/lib/utils'
-import React from 'react'
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { cn } from '@/lib/utils';
+import React from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 type Props = {
-  date: Date | undefined
-  onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>
-  onBack(): void
-  register: UseFormRegister<FieldValues>
-  onSlot(slot: string): void
-  currentSlot?: string
-  loading: boolean
+  date: Date | undefined;
+  onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  onBack(): void;
+  register: UseFormRegister<FieldValues>;
+  onSlot(slot: string): void;
+  currentSlot?: string;
+  loading: boolean;
   bookings:
     | {
-        date: Date
-        slot: string
+        date: Date;
+        slot: string;
       }[]
-    | undefined
-}
+    | undefined;
+};
 
 const BookAppointmentDate = ({
   date,
@@ -45,7 +45,7 @@ const BookAppointmentDate = ({
         <div className="w-[300px]">
           <h6>Chamada de descoberta</h6>
           <CardDescription>
-          Durante esta chamada, pretendemos explorar possíveis caminhos para
+            Durante esta chamada, pretendemos explorar possíveis caminhos para
             parceria, oportunidades promocionais ou qualquer outro meio através
             com os quais podemos contribuir para o sucesso da sua empresa.
           </CardDescription>
@@ -60,10 +60,7 @@ const BookAppointmentDate = ({
         </div>
         <div className="flex flex-col gap-5">
           {APPOINTMENT_TIME_SLOTS.map((slot, key) => (
-            <Label
-              htmlFor={`slot-${key}`}
-              key={key}
-            >
+            <Label htmlFor={`slot-${key}`} key={key}>
               <Card
                 onClick={() => onSlot(slot.slot)}
                 className={cn(
@@ -105,11 +102,7 @@ const BookAppointmentDate = ({
         </div>
       </div>
       <div className="flex gap-5 justify-center mt-5">
-        <Button
-          type="button"
-          onClick={onBack}
-          variant={'outline'}
-        >
+        <Button type="button" onClick={onBack} variant={'outline'}>
           Editar perguntas?
         </Button>
         <Button>
@@ -117,7 +110,7 @@ const BookAppointmentDate = ({
         </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BookAppointmentDate
+export default BookAppointmentDate;

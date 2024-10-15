@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 type MenuLogoProps = {
-  onClick(): void
-}
+  onClick(): void;
+};
 
 export const MenuLogo = ({ onClick }: MenuLogoProps) => {
   return (
@@ -34,5 +34,5 @@ export const MenuLogo = ({ onClick }: MenuLogoProps) => {
         strokeLinecap="round"
       />
     </svg>
-  )
-}
+  );
+};

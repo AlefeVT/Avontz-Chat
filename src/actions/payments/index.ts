@@ -1,8 +1,7 @@
-'use server'
+'use server';
 
-import { client } from '@/lib/prisma'
-import { currentUser } from '@clerk/nextjs/server'
-
+import { client } from '@/lib/prisma';
+import { currentUser } from '@clerk/nextjs/server';
 
 export const onDomainCustomerResponses = async (customerId: string) => {
   try {
@@ -20,15 +19,15 @@ export const onDomainCustomerResponses = async (customerId: string) => {
           },
         },
       },
-    })
+    });
 
     if (customerQuestions) {
-      return customerQuestions
+      return customerQuestions;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetAllDomainBookings = async (domainId: string) => {
   try {
@@ -40,15 +39,15 @@ export const onGetAllDomainBookings = async (domainId: string) => {
         slot: true,
         date: true,
       },
-    })
+    });
 
     if (bookings) {
-      return bookings
+      return bookings;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onBookNewAppointment = async (
   domainId: string,
@@ -72,15 +71,15 @@ export const onBookNewAppointment = async (
           },
         },
       },
-    })
+    });
 
     if (booking) {
-      return { status: 200, message: 'Reserva criada' }
+      return { status: 200, message: 'Reserva criada' };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const saveAnswers = async (
   questions: [question: string],
@@ -102,16 +101,16 @@ export const saveAnswers = async (
             },
           },
         },
-      })
+      });
     }
     return {
       status: 200,
       messege: 'Respostas atualizadas',
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetAllBookingsForCurrentUser = async (clerkId: string) => {
   try {
@@ -142,21 +141,21 @@ export const onGetAllBookingsForCurrentUser = async (clerkId: string) => {
           },
         },
       },
-    })
+    });
 
     if (bookings) {
       return {
         bookings,
-      }
+      };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const getUserAppointments = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const bookings = await client.bookings.count({
         where: {
@@ -168,13 +167,13 @@ export const getUserAppointments = async () => {
             },
           },
         },
-      })
+      });
 
       if (bookings) {
-        return bookings
+        return bookings;
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

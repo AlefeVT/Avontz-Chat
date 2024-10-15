@@ -1,15 +1,15 @@
-import React from 'react'
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
-import { Edit } from 'lucide-react'
-import { ErrorMessage } from '@hookform/error-message'
+import React from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+import { Edit } from 'lucide-react';
+import { ErrorMessage } from '@hookform/error-message';
 
 type Props = {
-  register: UseFormRegister<any>
-  errors: FieldErrors<FieldValues>
-  label: string
-}
+  register: UseFormRegister<any>;
+  errors: FieldErrors<FieldValues>;
+  label: string;
+};
 
 const UploadButton = ({ errors, label, register }: Props) => {
   return (
@@ -29,7 +29,7 @@ const UploadButton = ({ errors, label, register }: Props) => {
           {label}
         </Label>
         <p className="text-sm text-gray-400 ml-6">
-        O tamanho recomendado é 300px * 300px, tamanho <br /> menor que 2 MB
+          O tamanho recomendado é 300px * 300px, tamanho <br /> menor que 2 MB
         </p>
       </div>
       <ErrorMessage
@@ -42,7 +42,7 @@ const UploadButton = ({ errors, label, register }: Props) => {
         )}
       />
     </>
-  )
-}
+  );
+};
 
-export default UploadButton
+export default UploadButton;

@@ -1,35 +1,35 @@
-import { onGetAllBookingsForCurrentUser } from '@/actions/appointment'
-import AllAppointments from '@/components/appointment/all-appointments'
+import { onGetAllBookingsForCurrentUser } from '@/actions/appointment';
+import AllAppointments from '@/components/appointment/all-appointments';
 
-import InfoBar from '@/components/infobar'
-import Section from '@/components/section-label'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Card, CardContent } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
-import { currentUser } from '@clerk/nextjs/server'
+import InfoBar from '@/components/infobar';
+import Section from '@/components/section-label';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { currentUser } from '@clerk/nextjs/server';
 
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const Page = async (props: Props) => {
-  const user = await currentUser()
+  const user = await currentUser();
 
-  if (!user) return null
-  const domainBookings = await onGetAllBookingsForCurrentUser(user.id)
-  const today = new Date()
+  if (!user) return null;
+  const domainBookings = await onGetAllBookingsForCurrentUser(user.id);
+  const today = new Date();
 
-    // console.log(domainBookings);
+  // console.log(domainBookings);
   if (!domainBookings)
     return (
       <div className="w-full flex justify-center">
         <p>Sem compromissos</p>
       </div>
-    )
+    );
 
   const bookingsExistToday = domainBookings.bookings.filter(
     (booking) => booking.date.getDate() === today.getDate()
-  )
+  );
 
   return (
     <>
@@ -56,14 +56,14 @@ const Page = async (props: Props) => {
                   <div className="flex flex-col flex-1">
                     <div className="flex justify-between w-full p-3">
                       <p className="text-sm">
-                      criado
+                        criado
                         <br />
                         {booking.createdAt.getHours()}{' '}
                         {booking.createdAt.getMinutes()}{' '}
                         {booking.createdAt.getHours() > 12 ? 'PM' : 'AM'}
                       </p>
                       <p className="text-sm">
-                      Domínio <br />
+                        Domínio <br />
                         {booking.Customer?.Domain?.name}
                       </p>
                     </div>
@@ -86,7 +86,7 @@ const Page = async (props: Props) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

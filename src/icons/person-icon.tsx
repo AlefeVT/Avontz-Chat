@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const PersonIcon = (props: Props) => {
   return (
@@ -35,7 +35,7 @@ const PersonIcon = (props: Props) => {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default PersonIcon
+export default PersonIcon;

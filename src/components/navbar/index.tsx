@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Button } from '../ui/button'
-import Link from 'next/link'
-import { Logo } from '../logo'
+import * as React from 'react';
+import { Button } from '../ui/button';
+import Link from 'next/link';
+import { Logo } from '../logo';
 
 function NavBar() {
   return (
@@ -22,7 +22,7 @@ function NavBar() {
         </Button>
       </Link>
     </div>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

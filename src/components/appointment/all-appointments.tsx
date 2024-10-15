@@ -1,28 +1,28 @@
-import { APPOINTMENT_TABLE_HEADER } from '@/constants/menu'
-import React from 'react'
+import { APPOINTMENT_TABLE_HEADER } from '@/constants/menu';
+import React from 'react';
 
-import { TableCell, TableRow } from '../ui/table'
-import { getMonthName } from '@/lib/utils'
-import { CardDescription } from '../ui/card'
-import { DataTable } from '../table'
+import { TableCell, TableRow } from '../ui/table';
+import { getMonthName } from '@/lib/utils';
+import { CardDescription } from '../ui/card';
+import { DataTable } from '../table';
 
 type Props = {
   bookings:
     | {
         Customer: {
           Domain: {
-            name: string
-          } | null
-        } | null
-        id: string
-        email: string
-        domainId: string | null
-        date: Date
-        slot: string
-        createdAt: Date
+            name: string;
+          } | null;
+        } | null;
+        id: string;
+        email: string;
+        domainId: string | null;
+        date: Date;
+        slot: string;
+        createdAt: Date;
       }[]
-    | undefined
-}
+    | undefined;
+};
 
 const AllAppointments = ({ bookings }: Props) => {
   return (
@@ -57,7 +57,7 @@ const AllAppointments = ({ bookings }: Props) => {
         <CardDescription>No Appointments</CardDescription>
       )}
     </DataTable>
-  )
-}
+  );
+};
 
-export default AllAppointments
+export default AllAppointments;

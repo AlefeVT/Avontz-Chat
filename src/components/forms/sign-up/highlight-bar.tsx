@@ -1,12 +1,12 @@
-'use client'
-import { useAuthContextHook } from '@/context/use-auth-context'
-import { cn } from '@/lib/utils'
-import React from 'react'
+'use client';
+import { useAuthContextHook } from '@/context/use-auth-context';
+import { cn } from '@/lib/utils';
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const HighLightBar = (props: Props) => {
-  const { currentStep } = useAuthContextHook()
+  const { currentStep } = useAuthContextHook();
 
   return (
     <div className="grid grid-cols-3 gap-3">
@@ -29,7 +29,7 @@ const HighLightBar = (props: Props) => {
         )}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-export default HighLightBar
+export default HighLightBar;

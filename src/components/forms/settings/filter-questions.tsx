@@ -1,24 +1,24 @@
-'use client'
-import Section from '@/components/section-label'
+'use client';
+import Section from '@/components/section-label';
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
-} from '@/components/ui/card'
-import { useFilterQuestions, useHelpDesk } from '@/hooks/settings/use-settings'
-import React from 'react'
-import FormGenerator from '../form-generator'
-import { Button } from '@/components/ui/button'
-import { Loader } from '@/components/loader'
+} from '@/components/ui/card';
+import { useFilterQuestions, useHelpDesk } from '@/hooks/settings/use-settings';
+import React from 'react';
+import FormGenerator from '../form-generator';
+import { Button } from '@/components/ui/button';
+import { Loader } from '@/components/loader';
 
 type Props = {
-  id: string
-}
+  id: string;
+};
 
 const FilterQuestions = ({ id }: Props) => {
   const { register, errors, onAddFilterQuestions, isQuestions, loading } =
-    useFilterQuestions(id)
+    useFilterQuestions(id);
 
   return (
     <Card className="w-full grid grid-cols-1 lg:grid-cols-2">
@@ -71,10 +71,7 @@ const FilterQuestions = ({ id }: Props) => {
         <Loader loading={loading}>
           {isQuestions.length ? (
             isQuestions.map((question) => (
-              <p
-                key={question.id}
-                className="font-bold"
-              >
+              <p key={question.id} className="font-bold">
                 {question.question}
               </p>
             ))
@@ -84,7 +81,7 @@ const FilterQuestions = ({ id }: Props) => {
         </Loader>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default FilterQuestions
+export default FilterQuestions;

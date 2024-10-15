@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+type Props = {};
 
 const HelpDeskIcon = (props: Props) => {
   return (
@@ -47,7 +47,7 @@ const HelpDeskIcon = (props: Props) => {
         strokeLinejoin="round"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default HelpDeskIcon
+export default HelpDeskIcon;

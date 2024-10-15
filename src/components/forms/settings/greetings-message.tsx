@@ -1,13 +1,13 @@
-import Section from '@/components/section-label'
-import React from 'react'
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import FormGenerator from '../form-generator'
+import Section from '@/components/section-label';
+import React from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import FormGenerator from '../form-generator';
 
 type GreetingMessageProps = {
-  message: string
-  register: UseFormRegister<FieldValues>
-  errors: FieldErrors<FieldValues>
-}
+  message: string;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+};
 
 const GreetingsMessage = ({
   message,
@@ -32,7 +32,7 @@ const GreetingsMessage = ({
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GreetingsMessage
+export default GreetingsMessage;

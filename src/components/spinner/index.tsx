@@ -1,9 +1,9 @@
-import { cn } from '@/lib/utils'
-import React from 'react'
+import { cn } from '@/lib/utils';
+import React from 'react';
 
 type SpinnerProps = {
-  noPadding?: boolean
-}
+  noPadding?: boolean;
+};
 
 export const Spinner = ({ noPadding }: SpinnerProps) => {
   return (
@@ -28,5 +28,5 @@ export const Spinner = ({ noPadding }: SpinnerProps) => {
         <span className="sr-only">Loading...</span>
       </div>
     </div>
-  )
-}
+  );
+};

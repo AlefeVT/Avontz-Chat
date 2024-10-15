@@ -1,11 +1,10 @@
-'use server'
-import { client } from '@/lib/prisma'
-import { clerkClient, currentUser } from '@clerk/nextjs/server'
-
+'use server';
+import { client } from '@/lib/prisma';
+import { clerkClient, currentUser } from '@clerk/nextjs/server';
 
 export const onIntegrateDomain = async (domain: string, icon: string) => {
-  const user = await currentUser()
-  if (!user) return
+  const user = await currentUser();
+  if (!user) return;
   try {
     const subscription = await client.user.findUnique({
       where: {
@@ -23,7 +22,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
           },
         },
       },
-    })
+    });
     const domainExists = await client.user.findFirst({
       where: {
         clerkId: user.id,
@@ -33,7 +32,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
           },
         },
       },
-    })
+    });
 
     if (!domainExists) {
       if (
@@ -55,43 +54,43 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
                 icon,
                 chatBot: {
                   create: {
-                    welcomeMessage: 'Olá, tem alguma pergunta? Envie-nos uma mensagem aqui',
+                    welcomeMessage:
+                      'Olá, tem alguma pergunta? Envie-nos uma mensagem aqui',
                   },
                 },
               },
             },
           },
-        })
+        });
 
         if (newDomain) {
-          return { status: 200, message: 'Domínio adicionado com sucesso' }
+          return { status: 200, message: 'Domínio adicionado com sucesso' };
         }
       }
       return {
         status: 400,
-        message:
-          "Você atingiu o número máximo de domínios, atualize seu plano",
-      }
+        message: 'Você atingiu o número máximo de domínios, atualize seu plano',
+      };
     }
     return {
       status: 400,
       message: 'O domínio já existe',
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetSubscriptionPlan = async () => {
   try {
-    console.log("Fetching current user...");
-    const user = await currentUser()
+    console.log('Fetching current user...');
+    const user = await currentUser();
     if (!user) {
-      console.log("User not found.");
-      return
+      console.log('User not found.');
+      return;
     }
 
-    console.log("User found:", user);
+    console.log('User found:', user);
     const plan = await client.user.findUnique({
       where: {
         clerkId: user.id,
@@ -109,17 +108,16 @@ export const onGetSubscriptionPlan = async () => {
       const subscriptionPlan = plan.subscription?.plan;
       return subscriptionPlan;
     } else {
-      console.log("No plan found for user.");
+      console.log('No plan found for user.');
     }
   } catch (error) {
-    console.error("Error fetching subscription plan:", error);
+    console.error('Error fetching subscription plan:', error);
   }
-}
-
+};
 
 export const onGetAllAccountDomains = async () => {
-  const user = await currentUser()
-  if (!user) return
+  const user = await currentUser();
+  if (!user) return;
   try {
     const domains = await client.user.findUnique({
       where: {
@@ -145,31 +143,31 @@ export const onGetAllAccountDomains = async () => {
           },
         },
       },
-    })
-    return { ...domains }
+    });
+    return { ...domains };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 export const onUpdatePassword = async (password: string) => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
 
-    if (!user) return null
+    if (!user) return null;
 
     console.log(user);
-    const update = await clerkClient.users.updateUser(user.id, { password })
+    const update = await clerkClient.users.updateUser(user.id, { password });
     if (update) {
-      return { status: 200, message: 'Senha atualizada' }
+      return { status: 200, message: 'Senha atualizada' };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetCurrentDomainInfo = async (domain: string) => {
-  const user = await currentUser()
-  if (!user) return
+  const user = await currentUser();
+  if (!user) return;
   try {
     const userDomain = await client.user.findUnique({
       where: {
@@ -203,14 +201,14 @@ export const onGetCurrentDomainInfo = async (domain: string) => {
           },
         },
       },
-    })
+    });
     if (userDomain) {
-      return userDomain
+      return userDomain;
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onUpdateDomain = async (id: string, name: string) => {
   try {
@@ -221,7 +219,7 @@ export const onUpdateDomain = async (id: string, name: string) => {
           contains: name,
         },
       },
-    })
+    });
 
     if (!domainExists) {
       const domain = await client.domain.update({
@@ -231,34 +229,34 @@ export const onUpdateDomain = async (id: string, name: string) => {
         data: {
           name,
         },
-      })
+      });
 
       if (domain) {
         return {
           status: 200,
           message: 'Domínio atualizado',
-        }
+        };
       }
 
       return {
         status: 400,
         message: 'Ops, algo deu errado!',
-      }
+      };
     }
 
     return {
       status: 400,
       message: 'Já existe um domínio com este nome',
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onChatBotImageUpdate = async (id: string, icon: string) => {
-  const user = await currentUser()
+  const user = await currentUser();
 
-  if (!user) return
+  if (!user) return;
 
   try {
     const domain = await client.domain.update({
@@ -274,23 +272,23 @@ export const onChatBotImageUpdate = async (id: string, icon: string) => {
           },
         },
       },
-    })
+    });
 
     if (domain) {
       return {
         status: 200,
         message: 'Domínio atualizado',
-      }
+      };
     }
 
     return {
       status: 400,
       message: 'Ops, algo deu errado!',
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onUpdateWelcomeMessage = async (
   message: string,
@@ -310,20 +308,20 @@ export const onUpdateWelcomeMessage = async (
           },
         },
       },
-    })
+    });
 
     if (update) {
-      return { status: 200, message: 'Mensagem de boas-vindas atualizada' }
+      return { status: 200, message: 'Mensagem de boas-vindas atualizada' };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onDeleteUserDomain = async (id: string) => {
-  const user = await currentUser()
+  const user = await currentUser();
 
-  if (!user) return
+  if (!user) return;
 
   try {
     //first verify that domain belongs to user
@@ -334,7 +332,7 @@ export const onDeleteUserDomain = async (id: string) => {
       select: {
         id: true,
       },
-    })
+    });
 
     if (validUser) {
       //check that domain belongs to this user and delete
@@ -346,19 +344,19 @@ export const onDeleteUserDomain = async (id: string) => {
         select: {
           name: true,
         },
-      })
+      });
 
       if (deletedDomain) {
         return {
           status: 200,
           message: `${deletedDomain.name} foi excluído com sucesso`,
-        }
+        };
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onCreateHelpDeskQuestion = async (
   id: string,
@@ -387,24 +385,24 @@ export const onCreateHelpDeskQuestion = async (
           },
         },
       },
-    })
+    });
 
     if (helpDeskQuestion) {
       return {
         status: 200,
         message: 'Nova pergunta do suporte técnico adicionada',
         questions: helpDeskQuestion.helpdesk,
-      }
+      };
     }
 
     return {
       status: 400,
       message: 'Ops! algo deu errado',
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetAllHelpDeskQuestions = async (id: string) => {
   try {
@@ -417,17 +415,17 @@ export const onGetAllHelpDeskQuestions = async (id: string) => {
         answer: true,
         id: true,
       },
-    })
+    });
 
     return {
       status: 200,
       message: 'Nova pergunta do suporte técnico adicionada',
       questions: questions,
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onCreateFilterQuestions = async (id: string, question: string) => {
   try {
@@ -450,23 +448,23 @@ export const onCreateFilterQuestions = async (id: string, question: string) => {
           },
         },
       },
-    })
+    });
 
     if (filterQuestion) {
       return {
         status: 200,
         message: 'Pergunta de filtro adicionada',
         questions: filterQuestion.filterQuestions,
-      }
+      };
     }
     return {
       status: 400,
       message: 'Ops! algo deu errado',
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetAllFilterQuestions = async (id: string) => {
   try {
@@ -481,21 +479,21 @@ export const onGetAllFilterQuestions = async (id: string) => {
       orderBy: {
         question: 'asc',
       },
-    })
+    });
 
     return {
       status: 200,
       message: '',
       questions: questions,
-    }
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onGetPaymentConnected = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const connected = await client.user.findUnique({
         where: {
@@ -504,15 +502,15 @@ export const onGetPaymentConnected = async () => {
         select: {
           stripeId: true,
         },
-      })
+      });
       if (connected) {
-        return connected.stripeId
+        return connected.stripeId;
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onCreateNewDomainProduct = async (
   id: string,
@@ -534,15 +532,15 @@ export const onCreateNewDomainProduct = async (
           },
         },
       },
-    })
+    });
 
     if (product) {
       return {
         status: 200,
         message: 'Produto criado com sucesso',
-      }
+      };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
