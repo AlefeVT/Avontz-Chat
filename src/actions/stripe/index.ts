@@ -17,7 +17,7 @@ export const onCreateCustomerPaymentIntentSecret = async (
   try {
     const paymentIntent = await stripe.paymentIntents.create(
       {
-        currency: 'usd',
+        currency: 'brl',
         amount: amount * 100,
         automatic_payment_methods: {
           enabled: true,
@@ -90,7 +90,7 @@ export const onGetStripeClientSecret = async (
   try {
     const amount = setPlanAmount(item);
     const paymentIntent = await stripe.paymentIntents.create({
-      currency: 'usd',
+      currency: 'brl',
       amount: amount,
       automatic_payment_methods: {
         enabled: true,
