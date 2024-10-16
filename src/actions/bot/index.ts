@@ -206,11 +206,13 @@ export const onAiChatBotAssistant = async (
           author
         );
 
-        let responseLink = '';
+        let responseLink_appointment = '';
+        let responseLink_payment = '';
 
         const customerId = checkCustomer?.customer[0].id;
         if (customerId) {
-          responseLink = `http://localhost:3000/portal/${id}/appointment/${customerId}`;
+          responseLink_appointment = `http://localhost:3000/portal/${id}/appointment/${customerId}`;
+          responseLink_payment = `http://localhost:3000/portal/${id}/payment/${customerId}`;
         }
 
         const chatCompletion = await openai.chat.completions.create({
@@ -222,7 +224,7 @@ export const onAiChatBotAssistant = async (
               
               Avance na conversa usando essas perguntas. 
               
-              Sempre que você fizer uma pergunta do array, preciso que você adicione uma palavra-chave no final da pergunta (completa). Essa palavra-chave é extremamente importante. 
+              Sempre que você fizer uma pergunta do array, preciso que você adicione uma palavra-chave no final da pergunta. Essa palavra-chave é extremamente importante. 
               
               Não se esqueça disso.
 
@@ -234,11 +236,12 @@ export const onAiChatBotAssistant = async (
                 .map((questions) => questions.question)
                 .join(', ')}]
 
-              se o cliente disser algo fora do contexto ou inapropriado. Basta dizer que isso está além de você. Você terá um usuário real para continuar a conversa. E adicione uma palavra-chave (tempo real) no final.
+              se o cliente disser algo totalmente fora do contexto do assunto ou inapropriado. Basta dizer que isso está além de você. Você terá um usuário real para continuar a conversa.
 
-              se o cliente concordar em marcar uma consulta, treinamento, reunião ao algo do tipo, algo que envolva falar com o responsavel do site, envie-lhe este link ${responseLink}
+              se o cliente insistir em conversar diretamente com um atendente. Diga para que ele mande as perguntas no chat e será enviado um email para o endereço de email que ele informou, com um atendente entrando em contato para tirar a duvida.
+              se o cliente concordar em marcar uma consulta, treinamento, reunião ao algo do tipo, algo que envolva falar com o responsavel do site, envie-lhe este link ${responseLink_appointment}
 
-              se o cliente quiser comprar um produto redirecione-o para a página de pagamento ${responseLink}
+              se o cliente quiser comprar um produto redirecione-o para a página de pagamento ${responseLink_payment}
           `,
             },
             ...chat,

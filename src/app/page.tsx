@@ -31,7 +31,7 @@ export default async function Home() {
             qualquer site com apenas um trecho de código!
           </p>
           <Button className="bg-blue font-bold text-white px-4">
-            <Link href={'/auth/sign-up'}>Comece de graça</Link>
+            <Link href={'/dashboard'}>Comece de graça</Link>
           </Button>
           <Image
             src="/images/ilustracao_phone.png"

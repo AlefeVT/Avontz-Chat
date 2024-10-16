@@ -44,24 +44,24 @@ export const getMonthName = (month: number) => {
   return month == 1
     ? 'Jan'
     : month == 2
-      ? 'Feb'
+      ? 'Fev'
       : month == 3
         ? 'Mar'
         : month == 4
-          ? 'Apr'
+          ? 'Abr'
           : month == 5
-            ? 'May'
+            ? 'Mai'
             : month == 6
               ? 'Jun'
               : month == 7
                 ? 'Jul'
                 : month == 8
-                  ? 'Aug'
+                  ? 'Ago'
                   : month == 9
-                    ? 'Sep'
+                    ? 'Set'
                     : month == 10
-                      ? 'Oct'
+                      ? 'Out'
                       : month == 11
                         ? 'Nov'
-                        : month == 12 && 'Dec';
+                        : month == 12 && 'Dez';
 };
