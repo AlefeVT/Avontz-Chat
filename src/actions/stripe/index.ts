@@ -65,7 +65,7 @@ export const onUpdateSubscription = async (
     if (update) {
       return {
         status: 200,
-        message: 'subscription updated',
+        message: 'assinatura atualizada',
         plan: update.subscription?.plan,
       };
     }
