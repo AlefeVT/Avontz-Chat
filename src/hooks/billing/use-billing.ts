@@ -1,37 +1,58 @@
 import { useEffect, useState } from 'react';
 import {
+  onConectStripeUser,
   onCreateCustomerPaymentIntentSecret,
   onGetStripeClientSecret,
   onUpdateSubscription,
 } from '@/actions/stripe';
-import axios from 'axios';
 import {
   useElements,
   useStripe as useStripeHook,
 } from '@stripe/react-stripe-js';
 import { useRouter } from 'next/navigation';
-import { useToast } from '../use-toast';
+import { toast, useToast } from '../use-toast';
 
 export const useStripe = () => {
-  const [onStripeAccountPending, setOnStripeAccountPending] =
-    useState<boolean>(false);
+  const [onStripeAccountPending, setOnStripeAccountPending] = useState<boolean>(false);
+  const router = useRouter();
 
-  const onStripeConnect = async () => {
+  const onStripeConnect = async (stripeAccountId: string) => {
     try {
       setOnStripeAccountPending(true);
-      const account = await axios.get(`/api/stripe/connect`);
-      if (account) {
-        setOnStripeAccountPending(false);
-        if (account) {
-          window.location.href = account.data.url;
-        }
+
+      const response = await onConectStripeUser(stripeAccountId);
+
+      setOnStripeAccountPending(false);
+
+
+      if (response.status === 200) {
+        toast({
+          title: 'Sucesso!',
+          description: 'Conectado com sucesso',
+        });
+        router.push('/callback/stripe/success')
+
+      } else {
+
+        toast({
+          title: 'Erro!',
+          description: 'Erro ao conectar',
+        });
       }
     } catch (error) {
-      console.log(error);
+      setOnStripeAccountPending(false);
+      console.error('Erro ao conectar com o Stripe:', error);
+
+      toast({
+        title: 'Erro!',
+        description: 'Erro ao conectar com o Stripe',
+      });
     }
   };
+
   return { onStripeConnect, onStripeAccountPending };
 };
+
 
 export const useStripeCustomer = (amount: number, stripeId: string) => {
   const [stripeSecret, setStripeSecret] = useState<string>('');
@@ -92,13 +113,14 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
       if (paymentIntent?.status === 'succeeded') {
         toast({
           title: 'Sucesso!',
-          description: 'Payment complete',
+          description: 'Pagamento concluído',
         });
         onNext();
       }
 
       setProcessing(false);
     } catch (error) {
+      console.log("caiu aqui................")
       console.log(error);
     }
   };

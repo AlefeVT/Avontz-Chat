@@ -84,10 +84,19 @@ import { EmailMarketingBodySchema, EmailMarketingSchema } from '@/schemas/market
       try {
         setProcessing(true)
         const customersAdd = await onAddCustomersToEmail(isSelected, campaignId!)
-        if (customersAdd) {
+        console.log(customersAdd);
+        if (customersAdd?.status == 200) {
           toast({
-            title: 'Success',
+            title: 'Sucesso!',
             description: customersAdd.message,
+          })
+          setProcessing(false)
+          setCampaignId(undefined)
+          router.refresh()
+        } else {
+          toast({
+            title: 'Erro!',
+            description: customersAdd?.message,
           })
           setProcessing(false)
           setCampaignId(undefined)

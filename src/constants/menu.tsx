@@ -36,7 +36,7 @@ export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
     path: 'settings',
   },
   {
-    label: 'Agendamentos',
+    label: 'Compromissos',
     icon: <CalIcon />,
     path: 'appointment',
   },
