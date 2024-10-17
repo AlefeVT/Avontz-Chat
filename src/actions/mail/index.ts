@@ -116,24 +116,60 @@ export const onSaveEmailTemplate = async (
 
 export const onAddCustomersToEmail = async (
   customers: string[],
-  id: string
+  id: string | undefined
 ) => {
   try {
+    if (!id) {
+      return { status: 400, message: 'Por favor selecione uma campanha!' }
+    }
+
     console.log(customers, id)
+
+    const existingCampaign = await client.campaign.findUnique({
+      where: { id },
+      select: { customers: true },
+    })
+
+    if (!existingCampaign) {
+      return { status: 404, message: 'Campanha não encontrada' }
+    }
+
+    const alreadyInCampaign = customers.filter((customer) =>
+      existingCampaign.customers.includes(customer)
+    )
+
+    if (alreadyInCampaign.length === customers.length) {
+      return {
+        status: 400,
+        message: 'Clientes selecionados já pertencem a essa campanha!',
+      }
+    }
+
+    const newCustomers = customers.filter(
+      (customer) => !existingCampaign.customers.includes(customer)
+    )
+
     const customerAdd = await client.campaign.update({
       where: {
         id,
       },
       data: {
-        customers,
+        customers: [...existingCampaign.customers, ...newCustomers],
       },
     })
 
     if (customerAdd) {
-      return { status: 200, message: 'Cliente adicionado à campanha' }
+      return {
+        status: 200,
+        message: `${newCustomers.length} cliente(s) adicionado(s) à campanha`,
+      }
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error(error)
+    return { status: 500, message: 'Erro ao adicionar clientes à campanha' }
+  }
 }
+
 
 export const onBulkMailer = async (email: string[], campaignId: string) => {
   try {

@@ -10,6 +10,26 @@ const stripe = new Stripe(process.env.STRIPE_SECRET!, {
   apiVersion: '2024-09-30.acacia',
 });
 
+export const onConectStripeUser = async (stripeAccountId: string) => {
+  try {
+    const user = await currentUser();
+    
+    if (!user) {
+      throw new Error('Usuário não autenticado.');
+    }
+
+    await client.user.update({
+      where: { clerkId: user.id },
+      data: { stripeId: stripeAccountId },
+    });
+
+    return { status: 200, message: 'Stripe ID salvo com sucesso.' };
+  } catch (error) {
+    console.error('Erro ao salvar Stripe ID:', error);
+    return { status: 500, message: 'Erro ao salvar Stripe ID.' };
+  }
+};
+
 export const onCreateCustomerPaymentIntentSecret = async (
   amount: number,
   stripeId: string
