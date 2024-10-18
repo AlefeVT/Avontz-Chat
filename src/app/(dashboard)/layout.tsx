@@ -1,4 +1,5 @@
 import { onLoginUser } from '@/actions/auth';
+import { checkAndUpdateSubscription } from '@/actions/stripe';
 import SideBar from '@/components/sidebar';
 import { ChatProvider } from '@/context/use-chat-context';
 
@@ -14,6 +15,8 @@ const OwnerLayout = async ({ children }: Props) => {
     console.log('User not authenticated');
     return null;
   }
+
+  await checkAndUpdateSubscription();
 
   return (
     <ChatProvider>
