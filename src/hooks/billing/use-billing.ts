@@ -136,7 +136,7 @@ export const useSubscriptions = (plan: 'Simples' | 'Ultimate' | 'Plus') => {
   const onUpdatetToFreTier = async () => {
     try {
       setLoading(true);
-      const free = await onUpdateSubscription('Simples');
+      const free = await onUpdateSubscription(payment);
       if (free) {
         setLoading(false);
         toast({

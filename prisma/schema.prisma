@@ -59,12 +59,16 @@ model ChatBot {
 }
 
 model Billings {
-  id      String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  plan    Plans   @default(Simples)
-  credits Int     @default(10)
-  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId  String? @unique @db.Uuid
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  plan              Plans     @default(Simples)
+  pendingPlan       Plans?    
+  credits           Int       @default(10)
+  User              User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String?   @unique @db.Uuid
+  paidAt            DateTime  @default(now())
+  planExpirationDate DateTime?
 }
+
 
 model HelpDesk {
   id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid

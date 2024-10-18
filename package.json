@@ -60,6 +60,7 @@
     "openai": "^4.67.3",
     "prettier": "^3.3.3",
     "prisma": "^5.20.0",
+    "puppeteer": "^23.6.0",
     "pusher": "^5.2.0",
     "pusher-js": "^8.4.0-rc2",
     "react": "^18",
