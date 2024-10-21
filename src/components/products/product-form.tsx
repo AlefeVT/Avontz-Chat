@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import React from 'react'
+import React from 'react';
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
-import { ErrorMessage } from '@hookform/error-message'
-import { Loader } from '@/components/loader'
-import FormGenerator from '../forms/form-generator'
-import { UploadIcon } from 'lucide-react'
-import { useProducts } from '@/hooks/settings/use-settings'
+import { ErrorMessage } from '@hookform/error-message';
+import { Loader } from '@/components/loader';
+import FormGenerator from '../forms/form-generator';
+import { UploadIcon } from 'lucide-react';
+import { useProducts } from '@/hooks/settings/use-settings';
 
 type CreateProductFormProps = {
-  id: string
-}
+  id: string;
+};
 
 export const CreateProductForm = ({ id }: CreateProductFormProps) => {
-  const { onCreateNewProduct, register, errors, loading } = useProducts(id)
+  const { onCreateNewProduct, register, errors, loading } = useProducts(id);
   return (
     <form
       className="mt-3 w-full flex flex-col gap-5 py-10"
@@ -60,18 +60,15 @@ export const CreateProductForm = ({ id }: CreateProductFormProps) => {
       <FormGenerator
         inputType="input"
         register={register}
-        label="Price"
+        label="Preço"
         name="price"
         errors={errors}
         placeholder="0.00"
         type="text"
       />
-      <Button
-        type="submit"
-        className="w-full"
-      >
+      <Button type="submit" className="w-full">
         <Loader loading={loading}>Criar produto</Loader>
       </Button>
     </form>
-  )
-}
+  );
+};

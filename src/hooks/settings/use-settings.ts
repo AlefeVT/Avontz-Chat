@@ -28,7 +28,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UploadClient } from '@uploadcare/upload-client';
 import { useTheme } from 'next-themes';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useToast } from '../use-toast';
@@ -279,6 +279,7 @@ export const useProducts = (domainId: string) => {
         uploaded.uuid,
         values.price
       );
+
       if (product) {
         reset();
         toast({

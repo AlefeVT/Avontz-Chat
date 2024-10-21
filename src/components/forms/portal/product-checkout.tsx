@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import { CustomerPaymentForm } from './payment-form';
 import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js'
+import { loadStripe } from '@stripe/stripe-js';
 
 type Props = {
   onBack(): void;
@@ -29,12 +29,12 @@ const PaymentCheckout = ({
   products,
   stripeId,
 }: Props) => {
-    const StripePromise = loadStripe(
-      process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY!,
-      {
-        stripeAccount: stripeId!,
-      }
-    )
+  const StripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY!,
+    {
+      stripeAccount: stripeId!,
+    }
+  );
   const { stripeSecret, loadForm } = useStripeCustomer(amount!, stripeId!);
 
   return (

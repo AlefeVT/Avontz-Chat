@@ -13,10 +13,10 @@ export const onGetDomainProductsAndConnectedAccountId = async (id: string) => {
         User: {
           select: {
             stripeId: true,
-          }
-        }
-      }
-    })
+          },
+        },
+      },
+    });
 
     const products = await client.product.findMany({
       where: {
@@ -27,22 +27,22 @@ export const onGetDomainProductsAndConnectedAccountId = async (id: string) => {
         name: true,
         image: true,
       },
-    })
+    });
 
     if (products) {
       const totalAmount = products.reduce((current, next) => {
-        return current + next.price
-      }, 0)
+        return current + next.price;
+      }, 0);
       return {
         products: products,
         amount: totalAmount,
-        stripeId: connectedAccount?.User?.stripeId
-      }
+        stripeId: connectedAccount?.User?.stripeId,
+      };
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const onDomainCustomerResponses = async (customerId: string) => {
   try {

@@ -12,7 +12,7 @@ type Props = {
 const OwnerLayout = async ({ children }: Props) => {
   const authenticated = await onLoginUser();
   if (!authenticated) {
-    console.log('User not authenticated');
+    console.log('Usuário não autenticado');
     return null;
   }
 

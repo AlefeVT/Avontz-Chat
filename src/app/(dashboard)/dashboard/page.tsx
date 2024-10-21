@@ -1,26 +1,29 @@
-import { getUserAppointments } from '@/actions/appointment'
-import { getUserBalance, getUserClients, getUserPlanInfo, getUserTotalProductPrices, getUserTransactions } from '@/actions/dashboard'
-import DashboardCard from '@/components/dashboard/cards'
-import { PlanUsage } from '@/components/dashboard/plan-usage'
+import { getUserAppointments } from '@/actions/appointment';
+import {
+  getUserBalance,
+  getUserClients,
+  getUserPlanInfo,
+  getUserTotalProductPrices,
+  getUserTransactions,
+} from '@/actions/dashboard';
+import DashboardCard from '@/components/dashboard/cards';
+import { PlanUsage } from '@/components/dashboard/plan-usage';
+import RecentTransactions from '@/components/dashboard/recentTransactions';
+import InfoBar from '@/components/infobar';
+import CalIcon from '@/icons/cal-icon';
+import PersonIcon from '@/icons/person-icon';
+import { DollarSign } from 'lucide-react';
+import React from 'react';
 
-import InfoBar from '@/components/infobar'
-import { Separator } from '@/components/ui/separator'
-import CalIcon from '@/icons/cal-icon'
-
-import PersonIcon from '@/icons/person-icon'
-import { TransactionsIcon } from '@/icons/transactions-icon'
-import { DollarSign } from 'lucide-react'
-import React from 'react'
-
-type Props = {}
+type Props = {};
 
 const Page = async (props: Props) => {
-  const clients = await getUserClients()
-  const sales = await getUserBalance()
-  const bookings = await getUserAppointments()
-  const plan = await getUserPlanInfo()
-  const transactions = await getUserTransactions()
-  const products = await getUserTotalProductPrices()
+  const clients = await getUserClients();
+  const sales = await getUserBalance();
+  const bookings = await getUserAppointments();
+  const plan = await getUserPlanInfo();
+  const transactions = await getUserTransactions();
+  const products = await getUserTotalProductPrices();
 
   return (
     <>
@@ -55,7 +58,8 @@ const Page = async (props: Props) => {
             <div>
               <h2 className="font-bold text-2xl">Uso do plano</h2>
               <p className="text-sm font-light">
-              Uma visão geral detalhada de suas métricas, uso, clientes e muito mais
+                Uma visão geral detalhada de suas métricas, uso, clientes e
+                muito mais
               </p>
             </div>
             <PlanUsage
@@ -65,34 +69,14 @@ const Page = async (props: Props) => {
               clients={clients || 0}
             />
           </div>
-          <div className="flex flex-col mr-10">
-            <div className="w-full flex justify-between items-start mb-5">
-              <div className="flex gap-3 items-center">
-                <TransactionsIcon />
-                <p className="font-bold">Transações recentes</p>
-              </div>
-              {/* <p className="text-sm">Ver mais</p> */}
-            </div>
-            <Separator orientation="horizontal" />
-            {transactions &&
-              transactions.data.map((transaction) => (
-                <div
-                  className="flex gap-3 w-full justify-between items-center border-b-2 py-5"
-                  key={transaction.id}
-                >
-                  <p className="font-bold">
-                    {transaction.calculated_statement_descriptor}
-                  </p>
-                  <p className="font-bold text-xl">
-                    R$ {transaction.amount / 100}
-                  </p>
-                </div>
-              ))}
-          </div>
+          {/* Utilizando o componente RecentTransactions */}
+          {transactions && transactions.data && (
+            <RecentTransactions transactions={transactions.data} />
+          )}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

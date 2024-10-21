@@ -28,7 +28,11 @@ const SubscriptionCard = ({
       >
         <CardContent className="flex justify-between p-2">
           <div className="flex items-center gap-3">
-            <Card className={cn('flex justify-center p-3 border-none whitespace-nowrap')}>
+            <Card
+              className={cn(
+                'flex justify-center p-3 border-none whitespace-nowrap'
+              )}
+            >
               <CardTitle>R$ {price}</CardTitle>
             </Card>
 

@@ -25,11 +25,17 @@ export const IntegrationModalBody = ({
   type,
   connections,
 }: IntegrationModalBodyProps) => {
-  const { register, handleSubmit, formState: { errors, isValid }, watch, reset } = useForm<FormData>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    watch,
+    reset,
+  } = useForm<FormData>({
     resolver: zodResolver(StripeConectSchema),
-    mode: 'onChange' 
+    mode: 'onChange',
   });
-  const stripeAccountIdValue = watch("stripeAccountId", "");
+  const stripeAccountIdValue = watch('stripeAccountId', '');
   const { onStripeConnect } = useStripe();
 
   const onSubmit = (data: FormData) => {
@@ -65,7 +71,11 @@ export const IntegrationModalBody = ({
 
             <div className="flex justify-between mt-10">
               <Button variant="outline">Saber mais</Button>
-              <StripeConnect connected={connections[type]} stripeAccountId={stripeAccountIdValue} isDisabled={!isValid} />
+              <StripeConnect
+                connected={connections[type]}
+                stripeAccountId={stripeAccountIdValue}
+                isDisabled={!isValid}
+              />
             </div>
           </form>
         </div>

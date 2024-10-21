@@ -1,13 +1,12 @@
-import React from 'react'
-import { ProgressBar } from '../progress'
-
+import React from 'react';
+import { ProgressBar } from '../progress';
 
 type PlanUsageProps = {
-  plan: 'Simples' | 'Ultimate' | 'Plus'
-  credits: number
-  domains: number
-  clients: number
-}
+  plan: 'Simples' | 'Ultimate' | 'Plus';
+  credits: number;
+  domains: number;
+  clients: number;
+};
 
 export const PlanUsage = ({
   plan,
@@ -15,7 +14,7 @@ export const PlanUsage = ({
   domains,
   clients,
 }: PlanUsageProps) => {
-  console.log(credits)
+  console.log(credits);
   return (
     <div className="flex flex-col gap-5 py-5">
       <ProgressBar
@@ -34,5 +33,5 @@ export const PlanUsage = ({
         credits={clients}
       />
     </div>
-  )
-}
+  );
+};

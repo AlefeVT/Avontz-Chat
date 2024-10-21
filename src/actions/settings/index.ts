@@ -83,14 +83,14 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
 
 export const onGetSubscriptionPlan = async () => {
   try {
-    console.log('Fetching current user...');
+    // console.log('Fetching current user...');
     const user = await currentUser();
     if (!user) {
       console.log('User not found.');
       return;
     }
 
-    console.log('User found:', user);
+    // console.log('User found:', user);
     const plan = await client.user.findUnique({
       where: {
         clerkId: user.id,
