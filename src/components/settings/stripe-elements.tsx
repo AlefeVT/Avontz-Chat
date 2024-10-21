@@ -1,20 +1,19 @@
-'use client'
+'use client';
 
-import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
-import React from 'react'
-import { Loader } from '../loader'
-import { useStripeElements } from '@/hooks/billing/use-billing'
-import { PaymentForm } from './payment-form'
-
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import React from 'react';
+import { Loader } from '../loader';
+import { useStripeElements } from '@/hooks/billing/use-billing';
+import { PaymentForm } from './payment-form';
 
 type StripeElementsProps = {
-  payment: 'Simples' | 'Ultimate' | 'Plus'
-}
+  payment: 'Simples' | 'Ultimate' | 'Plus';
+};
 
 export const StripeElements = ({ payment }: StripeElementsProps) => {
-  const StripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY!)
-  const { stripeSecret, loadForm } = useStripeElements(payment)
+  const StripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISH_KEY!);
+  const { stripeSecret, loadForm } = useStripeElements(payment);
   return (
     stripeSecret &&
     StripePromise &&
@@ -30,5 +29,5 @@ export const StripeElements = ({ payment }: StripeElementsProps) => {
         </Elements>
       </Loader>
     )
-  )
-}
+  );
+};

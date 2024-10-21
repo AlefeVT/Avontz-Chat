@@ -52,11 +52,11 @@ export const MinMenu = ({
             icon={<LogOut />}
             onSignOut={onSignOut}
           />
-          <MenuItem
+          {/* <MenuItem
             size="min"
             label="Aplicativo móvel"
             icon={<MonitorSmartphone />}
-          />
+          /> */}
         </div>
       </div>
     </div>

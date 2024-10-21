@@ -8,10 +8,14 @@ import { useStripe } from '@/hooks/billing/use-billing';
 type StripeConnectProps = {
   connected: boolean;
   stripeAccountId: string;
-  isDisabled: boolean; 
+  isDisabled: boolean;
 };
 
-export const StripeConnect = ({ connected, stripeAccountId, isDisabled }: StripeConnectProps) => {
+export const StripeConnect = ({
+  connected,
+  stripeAccountId,
+  isDisabled,
+}: StripeConnectProps) => {
   const { onStripeConnect, onStripeAccountPending } = useStripe();
 
   const handleConnect = () => {

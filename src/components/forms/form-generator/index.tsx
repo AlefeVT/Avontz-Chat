@@ -86,13 +86,13 @@ const FormGenerator = ({
         <Label className="flex flex-col gap-2" htmlFor={`input-${label}`}>
           {label && label}
           <Textarea
-  form={form}
-  id={`input-${label}`}
-  placeholder={placeholder}
-  {...register(name)}
-  rows={lines}
-  defaultValue={defaultValue}
-/>
+            form={form}
+            id={`input-${label}`}
+            placeholder={placeholder}
+            {...register(name)}
+            rows={lines}
+            defaultValue={defaultValue}
+          />
 
           <ErrorMessage
             errors={errors}

@@ -1,24 +1,24 @@
-'use client'
-import React, { useEffect } from 'react'
+'use client';
+import React, { useEffect } from 'react';
 
-import { Button } from '../ui/button'
-import { Loader } from '../loader'
+import { Button } from '../ui/button';
+import { Loader } from '../loader';
 import {
   FieldErrors,
   FieldValues,
   UseFormRegister,
   UseFormSetValue,
-} from 'react-hook-form'
-import { useEditEmail } from '@/hooks/email-marketing/use-marketing'
-import FormGenerator from '../forms/form-generator'
+} from 'react-hook-form';
+import { useEditEmail } from '@/hooks/email-marketing/use-marketing';
+import FormGenerator from '../forms/form-generator';
 
 type EditEmailProps = {
-  id: string
-  onCreate(): void
-  register: UseFormRegister<FieldValues>
-  errors: FieldErrors<FieldValues>
-  setDefault: UseFormSetValue<FieldValues>
-}
+  id: string;
+  onCreate(): void;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  setDefault: UseFormSetValue<FieldValues>;
+};
 
 export const EditEmail = ({
   id,
@@ -27,13 +27,13 @@ export const EditEmail = ({
   register,
   setDefault,
 }: EditEmailProps) => {
-  const { loading, template } = useEditEmail(id)
+  const { loading, template } = useEditEmail(id);
 
   useEffect(() => {
     if (template) {
-      setDefault('description', JSON.parse(template))
+      setDefault('description', JSON.parse(template));
     }
-  }, [template, setDefault])
+  }, [template, setDefault]);
 
   return (
     <form onSubmit={onCreate} className="flex flex-col gap-3">
@@ -52,5 +52,5 @@ export const EditEmail = ({
         <Button>Salvar</Button>
       </Loader>
     </form>
-  )
-}
+  );
+};

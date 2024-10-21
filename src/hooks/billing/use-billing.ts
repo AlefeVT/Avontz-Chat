@@ -13,7 +13,8 @@ import { useRouter } from 'next/navigation';
 import { toast, useToast } from '../use-toast';
 
 export const useStripe = () => {
-  const [onStripeAccountPending, setOnStripeAccountPending] = useState<boolean>(false);
+  const [onStripeAccountPending, setOnStripeAccountPending] =
+    useState<boolean>(false);
   const router = useRouter();
 
   const onStripeConnect = async (stripeAccountId: string) => {
@@ -24,16 +25,13 @@ export const useStripe = () => {
 
       setOnStripeAccountPending(false);
 
-
       if (response.status === 200) {
         toast({
           title: 'Sucesso!',
           description: 'Conectado com sucesso',
         });
-        router.push('/callback/stripe/success')
-
+        router.push('/callback/stripe/success');
       } else {
-
         toast({
           title: 'Erro!',
           description: 'Erro ao conectar',
@@ -52,7 +50,6 @@ export const useStripe = () => {
 
   return { onStripeConnect, onStripeAccountPending };
 };
-
 
 export const useStripeCustomer = (amount: number, stripeId: string) => {
   const [stripeSecret, setStripeSecret] = useState<string>('');
@@ -120,7 +117,7 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
 
       setProcessing(false);
     } catch (error) {
-      console.log("caiu aqui................")
+      console.log('caiu aqui................');
       console.log(error);
     }
   };

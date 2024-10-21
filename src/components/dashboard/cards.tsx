@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 type Props = {
-  title: string
-  value: number
-  icon: JSX.Element
-  sales?: boolean
-}
+  title: string;
+  value: number;
+  icon: JSX.Element;
+  sales?: boolean;
+};
 
 const DashboardCard = ({ icon, title, value, sales }: Props) => {
   return (
@@ -19,7 +19,7 @@ const DashboardCard = ({ icon, title, value, sales }: Props) => {
         {value}
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardCard
+export default DashboardCard;

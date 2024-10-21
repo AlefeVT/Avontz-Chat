@@ -1,15 +1,14 @@
-
-import React from 'react'
-import { Loader } from '../loader'
-import { CardDescription } from '../ui/card'
-import { useAnswers } from '@/hooks/email-marketing/use-marketing'
+import React from 'react';
+import { Loader } from '../loader';
+import { CardDescription } from '../ui/card';
+import { useAnswers } from '@/hooks/email-marketing/use-marketing';
 
 type Props = {
-  id?: string
-}
+  id?: string;
+};
 
 const Answers = ({ id }: Props) => {
-  const { answers, loading } = useAnswers(id!)
+  const { answers, loading } = useAnswers(id!);
   return (
     <div className="flex flex-col gap-5 mt-10">
       <Loader loading={loading}>
@@ -27,7 +26,7 @@ const Answers = ({ id }: Props) => {
         )}
       </Loader>
     </div>
-  )
-}
+  );
+};
 
-export default Answers
+export default Answers;

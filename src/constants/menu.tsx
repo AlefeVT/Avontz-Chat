@@ -57,18 +57,18 @@ export const TABS_MENU: TABS_MENU_PROPS[] = [
     label: 'não lidos',
     icon: <EmailIcon />,
   },
-  {
-    label: 'todos',
-    icon: <EmailIcon />,
-  },
-  {
-    label: 'expirados',
-    icon: <TimerIcon />,
-  },
-  {
-    label: 'favoritos',
-    icon: <StarIcon />,
-  },
+  // {
+  //   label: 'todos',
+  //   icon: <EmailIcon />,
+  // },
+  // {
+  //   label: 'expirados',
+  //   icon: <TimerIcon />,
+  // },
+  // {
+  //   label: 'favoritos',
+  //   icon: <StarIcon />,
+  // },
 ];
 
 export const HELP_DESK_TABS_MENU: TABS_MENU_PROPS[] = [

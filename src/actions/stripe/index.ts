@@ -14,7 +14,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET!, {
 export const onConectStripeUser = async (stripeAccountId: string) => {
   try {
     const user = await currentUser();
-    
+
     if (!user) {
       throw new Error('Usuário não autenticado.');
     }
@@ -106,9 +106,8 @@ export const checkAndUpdateSubscription = async () => {
   const user = await currentUser();
   if (!user) return;
 
+  // console.log("CHAMOU A FUNÇÂO QUE VERIFICA PLANO");
 
-  console.log("CHAMOU A FUNÇÂO QUE VERIFICA PLANO");
-  
   // Buscar a assinatura atual do usuário
   const subscription = await client.user.findUnique({
     where: {
@@ -125,7 +124,10 @@ export const checkAndUpdateSubscription = async () => {
     },
   });
 
-  if (subscription?.subscription && subscription.subscription.planExpirationDate) {
+  if (
+    subscription?.subscription &&
+    subscription.subscription.planExpirationDate
+  ) {
     const today = new Date();
 
     // Verificar se a data de expiração chegou
@@ -139,7 +141,8 @@ export const checkAndUpdateSubscription = async () => {
           subscription: {
             update: {
               plan: newPlan || undefined, // Define o plano como undefined se pendingPlan for null
-              credits: newPlan === 'Ultimate' ? 50 : newPlan === 'Plus' ? 500 : 10,
+              credits:
+                newPlan === 'Ultimate' ? 50 : newPlan === 'Plus' ? 500 : 10,
               planExpirationDate: null, // Resetar a data de expiração
               pendingPlan: null, // Limpar o plano pendente
             },
@@ -149,7 +152,6 @@ export const checkAndUpdateSubscription = async () => {
     }
   }
 };
-
 
 const setPlanAmount = (item: 'Simples' | 'Ultimate' | 'Plus') => {
   if (item == 'Ultimate') {

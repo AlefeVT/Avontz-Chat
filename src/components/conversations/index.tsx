@@ -26,7 +26,7 @@ const ConversationMenu = ({ domains }: Props) => {
     useConversation();
 
   return (
-    <div className="py-3 px-0">
+    <div className="py-3 px-0 w-7/12">
       <TabsMenu triggers={TABS_MENU}>
         <TabsContent value="não lidos">
           <ConversationSearch domains={domains} register={register} />
@@ -52,7 +52,7 @@ const ConversationMenu = ({ domains }: Props) => {
             </Loader>
           </div>
         </TabsContent>
-        <TabsContent value="todos">
+        {/* <TabsContent value="todos">
           <Separator orientation="horizontal" className="mt-5" />
           todos
         </TabsContent>
@@ -63,7 +63,7 @@ const ConversationMenu = ({ domains }: Props) => {
         <TabsContent value="favoritos">
           <Separator orientation="horizontal" className="mt-5" />
           favoritado
-        </TabsContent>
+        </TabsContent> */}
       </TabsMenu>
     </div>
   );
