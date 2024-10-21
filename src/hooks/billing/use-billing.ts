@@ -30,7 +30,6 @@ export const useStripe = () => {
           title: 'Sucesso!',
           description: 'Conectado com sucesso',
         });
-        router.push('/callback/stripe/success');
       } else {
         toast({
           title: 'Erro!',
