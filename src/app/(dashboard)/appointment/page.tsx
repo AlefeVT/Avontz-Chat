@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { currentUser } from '@clerk/nextjs/server';
-
+import { GetServerSidePropsContext } from 'next';
 import React from 'react';
 
 type Props = {};
@@ -19,13 +19,13 @@ const Page = async (props: Props) => {
   const domainBookings = await onGetAllBookingsForCurrentUser(user.id);
   const today = new Date();
 
-  // console.log(domainBookings);
-  if (!domainBookings)
+  if (!domainBookings) {
     return (
       <div className="w-full flex justify-center">
         <p>Sem compromissos</p>
       </div>
     );
+  }
 
   const bookingsExistToday = domainBookings.bookings.filter(
     (booking) => booking.date.getDate() === today.getDate()
@@ -90,3 +90,24 @@ const Page = async (props: Props) => {
 };
 
 export default Page;
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const user = await currentUser();
+
+  if (!user) {
+    return {
+      redirect: {
+        destination: '/auth/sign-in',
+        permanent: false,
+      },
+    };
+  }
+
+  const domainBookings = await onGetAllBookingsForCurrentUser(user.id);
+
+  return {
+    props: {
+      domainBookings,
+    },
+  };
+}
